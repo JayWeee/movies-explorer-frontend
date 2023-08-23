@@ -1,0 +1,36 @@
+.timeline {
+  display: flex;
+  padding-bottom: 110px;
+}
+
+.timeline__backend-container {
+  width: 228px;
+}
+
+.timeline__frontend-container {
+  width: 912px;
+}
+
+.timeline__item {
+  margin: 0 0 16px;
+  padding: 9px 0;
+  background-color: #303030;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
+}
+
+.timeline__item_colored {
+  color: black;
+  background-color: #3DDC84;
+}
+
+.timeline__caption {
+  margin: 0;
+  color: #8b8b8b;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.21;
+  text-align: center;
+}
