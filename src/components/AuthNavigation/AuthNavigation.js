@@ -5,8 +5,8 @@ import './AuthNavigation.css';
 function AuthNavigation() {
   return (
     <div className='auth-navigation'>
-      <Link className='auth-navigation__register-link' to=''>Регистрация</Link>
-      <Link className='auth-navigation__signin-link' to=''>Войти</Link>
+      <Link className='auth-navigation__register-link' to='/signup'>Регистрация</Link>
+      <Link className='auth-navigation__signin-link' to='/signin'>Войти</Link>
     </div>
   );
 }

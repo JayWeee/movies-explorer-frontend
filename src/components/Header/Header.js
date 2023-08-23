@@ -7,11 +7,11 @@ import { Link } from 'react-router-dom';
 
 function Header() {
 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
     <header className="header">
-      <Link className='header__logo' to=''><img  src={logo} alt="Логотип сайта" /></Link>
+      <Link className='header__logo' to='/'><img  src={logo} alt="Логотип сайта" /></Link>
       {loggedIn ? <Navigation /> : <AuthNavigation />}
     </header>
   );

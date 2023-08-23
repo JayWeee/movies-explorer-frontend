@@ -5,11 +5,19 @@
 
 .navigation__link {
   text-decoration: none;
-  color: #fff;
+  color: white;
   font-size: 13px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.38;
   transition: opacity .2s linear;
+}
+
+.navigation__link_active {
+  text-decoration: none;
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.38;
 }
 
 .navigation__link:hover {
