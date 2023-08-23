@@ -5,7 +5,7 @@ import Container from '../Container/Container';
 
 function AboutProject() {
   return (
-    <section className='project'>
+    <section className='project' id='project'>
       <Container>
       <SectionTitle title="О проекте" />
       <div className='project-info'>

@@ -5,7 +5,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 
 function Techs() {
   return (
-    <section className='techs'>
+    <section className='techs' id='techs'>
       <Container>
         <SectionTitle title="Технологии" />
         <h2 className='techs__title'>7 технологий</h2>

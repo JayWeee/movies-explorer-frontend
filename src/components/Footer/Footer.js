@@ -1,7 +1,6 @@
 import React from 'react';
 import './Footer.css';
 import Container from '../Container/Container';
-import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -11,8 +10,8 @@ function Footer() {
         <div className='footer__info'>
           <p className='footer__copyright'>&copy; 2023</p>
           <div className='footer__links'>
-            <Link className='footer__link' to='https://practicum.yandex.ru'>Яндекс.Практикум</Link>
-            <Link className='footer__link' to='https://github.com/JayWeee'>Github</Link>
+            <a href='https://practicum.yandex.ru' className='footer__link' target='_blank' rel='noreferrer'>Яндекс.Практикум</a>
+            <a href='https://github.com/JayWeee' className='footer__link' target='_blank' rel='noreferrer'>Github</a>
           </div>
         </div>
       </Container>
