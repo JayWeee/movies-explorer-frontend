@@ -1,0 +1,48 @@
+.techs {
+  padding-top: 100px;
+  background-color: #272727;
+}
+
+.techs__title {
+  margin: 0 0 26px;
+  padding-top: 90px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.16;
+  letter-spacing: -2px;
+}
+
+.techs__caption {
+  margin: 0 auto;
+  padding-bottom: 100px;
+  box-sizing: border-box;
+  max-width: 460px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: -.56px;
+}
+
+.techs__list {
+  padding: 0 0 100px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.techs__item {
+  text-align: center;
+  width: 90px;
+  padding: 20px 0 21px;
+  background-color: #303030;
+  border-radius: 10px;
+  list-style-type: none;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -.56px;
+}

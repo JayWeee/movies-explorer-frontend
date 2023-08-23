@@ -1,0 +1,23 @@
+.promo {
+  padding-bottom: 110px;
+  box-sizing: border-box;
+}
+
+.promo__container {
+  max-width: 1200px;
+  border-radius: 10px;
+  background-color: #272727;
+  padding: 160px 235px 30px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.promo__caption {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.16;
+  max-width: 730px;
+  margin: 0 0 151px;
+  text-align: center;
+  letter-spacing: -2px;
+}

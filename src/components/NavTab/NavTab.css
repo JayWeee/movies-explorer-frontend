@@ -1,0 +1,25 @@
+.nav-tab {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.nav-tab__link {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  text-decoration: none;
+  color: white;
+  text-align: center;
+  width: 96px;
+  height: 36px;
+  background-color: #303030;
+  border-radius: 10px;
+  padding: 10px 0;
+  box-sizing: border-box;
+  transition: opacity .2s linear;
+}
+
+.nav-tab__link:hover {
+  opacity: .8;
+}
