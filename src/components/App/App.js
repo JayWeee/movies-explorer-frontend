@@ -12,9 +12,9 @@ function App() {
     <div className="App">
       <Header />
         <Routes>
-          <Route exact path='/' element={<Main />} />
-          <Route exact path='/movies' element={<Movies />} />
-          <Route exact path='/saved-movies' element={<SavedMovies />} />
+          <Route path='/' element={<Main />} />
+          <Route path='/movies' element={<Movies />} />
+          <Route path='/saved-movies' element={<SavedMovies />} />
         </Routes>
       <Footer />
     </div>
