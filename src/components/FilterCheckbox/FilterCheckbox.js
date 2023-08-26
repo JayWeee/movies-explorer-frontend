@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import './FilterCheckbox.css'
+import './FilterCheckbox.css';
 
 function FilterCheckbox() {
 
   const [checked, setChecked] = useState(false);
+  const pseudoItemClassName = `filter__pseudo-item ${checked && 'filter__pseudo-item_active'}`
 
   function handleChange() {
     setChecked(!checked);
@@ -17,7 +18,7 @@ function FilterCheckbox() {
             checked={checked}
             onChange={handleChange}
           />
-          <span className={checked ? 'filter__pseudo-item_active' : 'filter__pseudo-item'}></span>
+          <span className={pseudoItemClassName}></span>
           <span className='filter__checkbox-text'>Короткометражки</span>
         </label>
   );

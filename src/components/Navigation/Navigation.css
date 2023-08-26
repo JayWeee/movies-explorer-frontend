@@ -13,11 +13,7 @@
 }
 
 .navigation__link_active {
-  text-decoration: none;
-  color: white;
-  font-size: 13px;
   font-weight: 500;
-  line-height: 1.38;
 }
 
 .navigation__link:hover {

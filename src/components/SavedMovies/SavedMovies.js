@@ -1,17 +1,15 @@
 import React from 'react';
-import './Movies.css';
+import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
-import MoreButton from '../MoreButton/MoreButton';
 
-function Movies() {
+function SavedMovies() {
   return (
     <>
       <SearchForm />
-      <MoviesCardList />
-      <MoreButton />
+      <MoviesCardList onSavedPage={true} />
     </>
-  );
+  )
 }
 
-export default Movies;
+export default SavedMovies;

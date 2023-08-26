@@ -9,7 +9,7 @@ function Navigation() {
         <NavLink
           to="/movies"
           className={({ isActive }) =>
-            `${isActive ? "navigation__link_active" : "navigation__link"}`
+            `${isActive ? "navigation__link navigation__link_active" : "navigation__link"}`
           }
         >
           Фильмы
@@ -17,7 +17,7 @@ function Navigation() {
         <NavLink
           to="/saved-movies"
           className={({ isActive }) =>
-            `${isActive ? "navigation__link_active" : "navigation__link"}`
+            `${isActive ? "navigation__link navigation__link_active" : "navigation__link"}`
           }
         >
           Сохранённые фильмы

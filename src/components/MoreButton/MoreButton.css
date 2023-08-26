@@ -1,0 +1,23 @@
+.more {
+display: flex;
+justify-content: center;
+padding: 78px 0 80px;
+}
+
+.more__btn {
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #202020;
+  border: 1px solid #424242;
+  border-radius: 10px;
+  width: 320px;
+  padding: 11px 0 9px;
+  cursor: pointer;
+  transition: opacity .2s linear;
+}
+
+.more__btn:hover {
+  opacity: .8;
+}
