@@ -1,6 +1,6 @@
 import cardImg from '../images/card.png';
 
-const cards = [
+const movies = [
   {
     id: 1,
     title: '33 слова о дизайне',
@@ -55,8 +55,26 @@ const cards = [
     duration: 77,
     img: cardImg,
   },
+  {
+    id: 10,
+    title: 'Соберись перед прыжком',
+    duration: 77,
+    img: cardImg,
+  },
+  {
+    id: 11,
+    title: 'Пи Джей Харви: A dog called money',
+    duration: 77,
+    img: cardImg,
+  },
+  {
+    id: 12,
+    title: 'По волнам: Искусство звука в кино',
+    duration: 77,
+    img: cardImg,
+  },
 ]
 
 export {
-  cards,
+  movies,
 }

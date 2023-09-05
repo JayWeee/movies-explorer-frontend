@@ -4,8 +4,7 @@
 }
 
 .techs__title {
-  margin: 0 0 26px;
-  padding-top: 90px;
+  margin: 90px 0 26px;
   box-sizing: border-box;
   text-align: center;
   font-size: 50px;
@@ -32,7 +31,6 @@
   display: flex;
   justify-content: center;
   gap: 10px;
-  font-size: 14px;
 }
 
 .techs__item {
@@ -42,7 +40,35 @@
   background-color: #303030;
   border-radius: 10px;
   list-style-type: none;
+  font-size: 14px;
   font-weight: 400;
   line-height: normal;
   letter-spacing: -.56px;
+}
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding-top: 90px;
+  }
+
+  .techs__title {
+    margin: 80px 0 22px;
+  }
+
+  .techs__caption {
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: -0.48px;
+    padding-bottom: 83px;
+  }
+
+  .techs__list {
+    padding-bottom: 90px;
+  }
+
+  .techs__item {
+    width: 84px;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+  }
 }

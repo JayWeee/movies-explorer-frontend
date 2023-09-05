@@ -1,22 +1,28 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-
-import Header from '../Header/Header';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
+import Profile from '../Profile/Profile';
+import Register from '../Register/Register';
+import Login from '../Login/Login';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 function App() {
+
+  const { pathname } = useLocation()
+
   return (
     <div className="App">
-      <Header />
-        <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/movies' element={<Movies />} />
-          <Route path='/saved-movies' element={<SavedMovies />} />
-        </Routes>
-      <Footer />
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/movies' element={<Movies />} />
+        <Route path='/saved-movies' element={<SavedMovies />} />
+        <Route path='/profile' element={<Profile />} />
+        <Route path='/signup' element={<Register pathname={pathname} />} />
+        <Route path='/signin' element={<Login pathname={pathname} />} />
+        <Route path='*' element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }

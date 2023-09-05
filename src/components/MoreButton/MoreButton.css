@@ -2,6 +2,8 @@
 display: flex;
 justify-content: center;
 padding: 78px 0 80px;
+max-width: calc(100% - 140px);
+margin: 0 auto;
 }
 
 .more__btn {
@@ -20,4 +22,11 @@ padding: 78px 0 80px;
 
 .more__btn:hover {
   opacity: .8;
+}
+
+@media screen and (max-width: 768px) {
+  .more {
+    max-width: calc(100% - 60px);
+    padding-top: 62px;
+  }
 }

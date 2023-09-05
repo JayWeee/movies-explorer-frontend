@@ -1,18 +1,17 @@
 .search-form {
-  padding: 60px 0 0;
-  margin-bottom: 10px;
-  box-sizing: border-box;
+  margin: 80px auto 10px;
   border-bottom: 1px solid #424242;
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: calc(100% - 140px);
 }
 
 .search-form__container {
   display: flex;
   gap: 10px;
   align-items: center;
-  padding-bottom: 28px;
+  margin-bottom: 28px;
   box-sizing: border-box;
 }
 
@@ -27,6 +26,7 @@
   padding: 16px 20px;
   box-sizing: border-box;
   width: 1086px;
+  outline: none;
 }
 
 .search-form__submit-btn {
@@ -40,4 +40,19 @@
 
 .search-form__submit-btn:hover {
   opacity: .8;
+}
+
+@media screen and (max-width: 768px) {
+  .search-form {
+    max-width: calc(100% - 30px);
+  }
+
+  .search-form__container {
+    max-width: 708px;
+    margin-bottom: 37px;
+  }
+
+  .search-form__input {
+    max-width: 654px;
+  }
 }

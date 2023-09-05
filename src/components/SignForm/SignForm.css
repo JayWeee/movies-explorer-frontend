@@ -1,0 +1,47 @@
+.sign-form {
+  padding: 70px 0;
+  max-width: 396px;
+  margin: 0 auto;
+}
+
+.form {
+  padding-top: 40px;
+  box-sizing: border-box;
+}
+
+.form__title {
+  margin: 0 0 37px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.form__inputs {
+  margin: 0 0 44px;
+  padding: 0;
+  border: none;
+}
+
+.form__caption {
+  text-align: center;
+  color: #8B8B8B;
+  font-size: 14px;
+  margin: 0;
+}
+
+.form__caption-link {
+  color: #4285F4;
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 6px;
+  transition: opacity .2s linear;
+}
+
+.form__caption-link:hover {
+  opacity: .7;
+}
+
+@media screen and (max-width: 768px) {
+  .sign-form {
+    padding-top: 231px;
+  }
+}

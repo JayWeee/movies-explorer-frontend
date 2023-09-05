@@ -1,0 +1,9 @@
+.saved-movies__devider {
+  height: 242px;
+}
+
+@media screen and (max-width: 768px) {
+  .saved-movies__devider {
+    height: 177px;
+  }
+}

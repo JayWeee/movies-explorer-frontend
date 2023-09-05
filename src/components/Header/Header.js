@@ -1,17 +1,28 @@
-import { useState } from 'react';
-import './Header.css';
-import Navigation from '../Navigation/Navigation';
-import AuthNavigation from '../AuthNavigation/AuthNavigation';
-import Logo from '../Logo/Logo';
+import { useState } from "react";
+import "./Header.css";
+import Navigation from "../Navigation/Navigation";
+import AuthNavigation from "../AuthNavigation/AuthNavigation";
+import Logo from "../Logo/Logo";
 
 function Header() {
-
   const [loggedIn, setLoggedIn] = useState(true);
+  const [isSidebarActive, setIsSidebarActive] = useState(false);
+
+  function handleClick() {
+    setIsSidebarActive(true);
+  }
 
   return (
-    <header className="header">
+    <header className='header'>
       <Logo />
-      {loggedIn ? <Navigation /> : <AuthNavigation />}
+      {loggedIn ? (
+        <>
+          <input className='header__sidebar-button' type='button' onClick={handleClick} />
+          <Navigation isSidebarActive={isSidebarActive} setIsSidebarActive={setIsSidebarActive} />
+        </>
+      ) : (
+        <AuthNavigation />
+      )}
     </header>
   );
 }
