@@ -49,6 +49,36 @@
 
 @media screen and (max-width: 768px) {
   .footer {
-    max-width: 708px;
+    max-width: calc(100% - 60px);
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer {
+    max-width: calc(100% - 20px);
+  }
+
+  .footer__description {
+    font-size: 12px;
+  }
+
+  .footer__info {
+    flex-direction: column-reverse;
+    padding-top: 30px;
+  }
+
+  .footer__links {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .footer__link {
+    font-size: 12px;
+  }
+
+  .footer__copyright {
+    font-size: 12px;
   }
 }

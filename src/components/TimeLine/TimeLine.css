@@ -52,3 +52,29 @@
     max-width: 528px;
   }
 }
+
+@media screen and (max-width:320px) {
+  .timeline {
+    padding-bottom: 69px;
+  }
+
+  .timeline__item {
+    font-size: 11px;
+    margin-bottom: 10px;
+    padding: 11px 0;
+  }
+
+  .timeline__caption {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .timeline__backend-container {
+    max-width: 100px;
+  }
+
+  .timeline__frontend-container {
+    max-width: 184px;
+  }
+}

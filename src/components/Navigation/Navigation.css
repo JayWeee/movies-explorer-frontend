@@ -1,5 +1,6 @@
 .navigation__button-close {
   display: none;
+  padding: 0;
 }
 
 .navigation__main-link {
@@ -129,5 +130,21 @@
 
   .navigation__account-link {
     width: 100px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .navigation__container {
+    width: 100%;
+  }
+
+  .navigation__button-close {
+    width: 30px;
+    height: 30px;
+    margin: 19px 14px 107px 0;
+  }
+
+  .navigation__links-container {
+    gap: 22px;
   }
 }

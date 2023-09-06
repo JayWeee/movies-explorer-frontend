@@ -92,3 +92,39 @@
     height: 307px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .about-me {
+    padding-top: 70px;
+  }
+
+  .student {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 60px 0 70px;
+  }
+
+  .student__photo {
+    width: 100%;
+    height: 352px;
+    margin-bottom: 40px;
+  }
+
+  .student__name {
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+    padding-bottom: 20px;
+  }
+
+  .student__status {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .student__description {
+    font-size: 11px;
+    line-height: 1.45;
+    padding-bottom: 40px;
+  }
+}

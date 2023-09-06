@@ -33,3 +33,22 @@
 .auth-navigation__signin-link:hover {
   opacity: .8;
 }
+
+@media screen and (max-width: 320px) {
+  .auth-navigation {
+    gap: 14px;
+  }
+
+  .auth-navigation__register-link {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .auth-navigation__signin-link {
+    font-size: 10px;
+    line-height: 1.6;
+    max-width: 54px;
+    padding: 5px 12px;
+  }
+}

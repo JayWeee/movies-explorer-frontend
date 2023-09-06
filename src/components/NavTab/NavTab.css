@@ -29,3 +29,20 @@
   box-sizing: border-box;
   padding: 10px 0;
 }
+
+@media screen and (max-width: 320px) {
+  .nav-tab {
+    gap: 6px;
+  }
+
+  .nav-tab__item {
+    box-sizing: border-box;
+  }
+
+  .nav-tab__link {
+    font-size: 10px;
+    line-height: 1.6;
+    width: 82px;
+    padding: 5px 0;
+  }
+}

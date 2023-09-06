@@ -8,3 +8,9 @@
     max-width: 668px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .container {
+    max-width: 284px;
+  }
+}

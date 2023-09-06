@@ -39,3 +39,26 @@
     margin-bottom: 22px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .project-info {
+    flex-direction: column;
+    padding: 60px 0;
+    gap: 56px;
+  }
+
+  .project-info__container {
+    max-width: 284px;
+  }
+
+  .project-info__title {
+    font-size: 18px;
+    letter-spacing: -0.72px;
+    margin-bottom: 17px;
+  }
+
+  .project-info__caption {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+}

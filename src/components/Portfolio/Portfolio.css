@@ -40,7 +40,7 @@
   letter-spacing: -1.2px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   transition: opacity .2s linear;
 }
 
@@ -49,9 +49,8 @@
 }
 
 .portfolio__link-arrow {
-  width: 29px;
-  height: 60px;
-  object-fit: cover;
+  width: 18px;
+  height: 50px;
 }
 
 @media screen and (max-width: 768px) {
@@ -63,5 +62,28 @@
     font-size: 28px;
     line-height: 1.78;
     letter-spacing: -1.12px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .portfolio {
+    padding-bottom: 70px;
+  }
+
+  .portfolio__title {
+    font-size: 14px;
+    line-height: 1.42;
+    padding-bottom: 40px;
+  }
+
+  .portfolio__link {
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: -0.72px;
+  }
+
+  .portfolio__link-arrow {
+    width: 11px;
+    height: 25px;
   }
 }
