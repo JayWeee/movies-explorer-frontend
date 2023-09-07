@@ -37,6 +37,7 @@ function Profile() {
                     name='name'
                     id='name-input'
                     disabled={disabled}
+                    required
                   />
                 </label>
                 <span className='profile__input-error'>Ошибка</span>
@@ -50,6 +51,7 @@ function Profile() {
                     name='email'
                     id='email-input'
                     disabled={disabled}
+                    required
                   />
                 </label>
                 <span className='profile__input-error'>Ошибка</span>

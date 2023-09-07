@@ -13,6 +13,7 @@ function SearchForm() {
           name='search'
           id='search-input'
           placeholder='Фильм'
+          required
         />
         <button className='search-form__submit-btn'></button>
       </div>

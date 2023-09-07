@@ -12,6 +12,7 @@ function Input({ label, name, value, errMessage }) {
           value={value}
           name={name}
           id={`${name}-input`}
+          required
         />
       </label>
       <span className='input__error'>{errMessage}</span>
