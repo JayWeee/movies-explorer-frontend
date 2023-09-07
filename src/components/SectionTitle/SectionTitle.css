@@ -8,7 +8,7 @@
   border-bottom: 1px solid #DADADA;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
   .section-title {
     font-size: 18px;
     letter-spacing: -0.72px;

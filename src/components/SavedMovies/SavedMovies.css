@@ -7,3 +7,9 @@
     height: 177px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .saved-movies__devider {
+    height: 140px;
+  }
+}

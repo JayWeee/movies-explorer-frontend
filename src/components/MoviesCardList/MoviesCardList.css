@@ -6,11 +6,12 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 360px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 360px));
   gap: 60px 30px;
+  justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 890px) {
   .cards {
     max-width: calc(100% - 60px);
   }
@@ -18,5 +19,17 @@
   .grid-container {
     grid-template-columns: repeat(auto-fit, minmax(339px, 339px));
     gap: 47px 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .cards {
+    padding-top: 40px;
+    max-width: calc(100% - 20px);
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+    gap: 38px;
   }
 }

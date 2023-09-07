@@ -19,42 +19,43 @@ function Profile() {
   return (
     <section className='profile'>
       <Header />
-      <div className='profile__container'>
         <form
           className='profile__form'
           name='profile'
           id='profile'
           onSubmit={handleSubmit}
         >
-          <h2 className='profile__form-title'>Привет, Виталий!</h2>
-          <fieldset className='profile__inputs'>
-            <div className='profile__input-container'>
-              <label className='profile__input-label'>
-                Имя
-                <input
-                  className='profile__input-field'
-                  type='text'
-                  name='name'
-                  id='name-input'
-                  disabled={disabled}
-                />
-              </label>
-              <span className='profile__input-error'>Ошибка</span>
-            </div>
-            <div className='profile__input-container'>
-              <label className='profile__input-label'>
-                E-mail
-                <input
-                  className='profile__input-field'
-                  type='text'
-                  name='email'
-                  id='email-input'
-                  disabled={disabled}
-                />
-              </label>
-              <span className='profile__input-error'>Ошибка</span>
-            </div>
-          </fieldset>
+          <div className='profile__form-container'>
+            <h2 className='profile__form-title'>Привет, Виталий!</h2>
+            <fieldset className='profile__inputs'>
+              <div className='profile__input-container'>
+                <label className='profile__input-label'>
+                  Имя
+                  <input
+                    className='profile__input-field'
+                    type='text'
+                    name='name'
+                    id='name-input'
+                    disabled={disabled}
+                  />
+                </label>
+                <span className='profile__input-error'>Ошибка</span>
+              </div>
+              <div className='profile__input-container'>
+                <label className='profile__input-label'>
+                  E-mail
+                  <input
+                    className='profile__input-field'
+                    type='text'
+                    name='email'
+                    id='email-input'
+                    disabled={disabled}
+                  />
+                </label>
+                <span className='profile__input-error'>Ошибка</span>
+              </div>
+            </fieldset>
+          </div>
           {isEdit ? (
             <FormButton textButton='Сохранить' />
           ) : (
@@ -66,7 +67,6 @@ function Profile() {
             </div>
           )}
         </form>
-      </div>
     </section>
   );
 }

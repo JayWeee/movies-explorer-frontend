@@ -32,3 +32,10 @@
 .filter__pseudo-item_active {
   background: url(../../images/smalltumb.svg) no-repeat center / cover;
 }
+
+@media screen and (max-width: 320px) {
+  .filter__checkbox-text {
+    font-size: 11px;
+    line-height: 1.63;
+  }
+}

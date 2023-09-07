@@ -9,7 +9,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 426px) {
   .project {
     padding-top: 70px;
   }

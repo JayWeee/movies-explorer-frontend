@@ -53,6 +53,12 @@
   opacity: .8;
 }
 
+@media screen and (max-width: 1024px) {
+  .navigation__links {
+    gap: 242px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .navigation {
     z-index: 1;
@@ -133,7 +139,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 520px) {
   .navigation__container {
     width: 100%;
   }

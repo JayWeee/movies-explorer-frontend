@@ -93,7 +93,27 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 620px) {
+  .student__name {
+    font-size: 30px;
+    line-height: normal;
+    letter-spacing: -1.2px;
+    padding-bottom: 20px;
+  }
+
+  .student__status {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .student__description {
+    font-size: 11px;
+    line-height: 1.45;
+    padding-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
   .about-me {
     padding-top: 70px;
   }
@@ -106,6 +126,8 @@
 
   .student__photo {
     width: 100%;
+    max-width: 292px;
+    align-self: center;
     height: 352px;
     margin-bottom: 40px;
   }

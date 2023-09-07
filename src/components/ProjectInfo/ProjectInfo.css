@@ -1,5 +1,5 @@
 .project-info {
-  display: flex;
+  display: flex;justify-content: center;
   gap: 50px;
   padding: 70px 0 110px;
   box-sizing: border-box;
@@ -40,15 +40,16 @@
   }
 }
 
-@media screen and (max-width: 320px) {
-  .project-info {
-    flex-direction: column;
-    padding: 60px 0;
-    gap: 56px;
+@media screen and (max-width: 426px) {
+  .project-info__container {
+    max-width: 100%;
   }
 
-  .project-info__container {
-    max-width: 284px;
+  .project-info {
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0;
+    gap: 56px;
   }
 
   .project-info__title {
@@ -60,5 +61,11 @@
   .project-info__caption {
     font-size: 11px;
     line-height: 1.45;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .project-info__container {
+    max-width: 284px;
   }
 }

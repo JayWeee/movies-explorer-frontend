@@ -1,5 +1,6 @@
 .timeline {
   display: flex;
+  justify-content: center;
   padding-bottom: 110px;
 }
 
@@ -53,7 +54,7 @@
   }
 }
 
-@media screen and (max-width:320px) {
+@media screen and (max-width: 320px) {
   .timeline {
     padding-bottom: 69px;
   }
