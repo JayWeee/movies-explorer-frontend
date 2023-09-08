@@ -21,7 +21,14 @@ function MoviesCard({ card, onSavedPage }) {
   return (
     <article className='card'>
       <img className='card__img' alt='Карточка' src={card.img} />
-      <input className={onSavedPage ? cardBtnSavedClassName : cardBtnClassName} type='button' value={onSavedPage ? '' : cardBtnValue} onClick={handleChange} />
+      <div className='card__btn-container'>
+        <input
+          className={onSavedPage ? cardBtnSavedClassName : cardBtnClassName}
+          type='button'
+          value={onSavedPage ? '' : cardBtnValue}
+          onClick={handleChange}
+        />
+      </div>
       <div className='card__description'>
         <p className='card__title'>{card.title}</p>
         <p className='card__duration'>{getTimeFromMins(card.duration)}</p>

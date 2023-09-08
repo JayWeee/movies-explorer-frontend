@@ -4,7 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: calc(1280px - 140px);
+  max-width: 1280px;
+  width: calc(100% - 140px);
 }
 
 .search-form__container {
@@ -45,7 +46,7 @@
 
 @media screen and (max-width: 768px) {
   .search-form {
-    max-width: calc(100% - 60px);
+    width: calc(100% - 60px);
     margin-top: 83px;
   }
 
@@ -61,7 +62,7 @@
 
 @media screen and (max-width: 425px) {
   .search-form {
-    max-width: calc(100% - 28px);
+    width: calc(100% - 28px);
   }
 
   .search-form__container {

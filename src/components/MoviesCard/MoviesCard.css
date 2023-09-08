@@ -6,10 +6,24 @@
   max-width: 360px;
 }
 
-.card__btn {
+.card__btn-container {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 0;
+  right: 0;
+  width: 360px;
+  height: 201px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  opacity: 0;
+  transition: opacity .2s linear;
+}
+
+.card__btn-container:hover {
+  opacity: 1;
+}
+
+.card__btn {
   color: white;
   text-align: center;
   font-size: 10px;
@@ -20,10 +34,14 @@
   border-radius: 30px;
   width: 72px;
   padding: 6px 0;
+  margin: 14px 14px 0 0;
   box-sizing: border-box;
-  opacity: 0;
   cursor: pointer;
   transition: .1s ease-in-out;
+}
+
+.card__btn:hover {
+  opacity: .8;
 }
 
 .card__btn_saved {
@@ -32,15 +50,14 @@
   height: 21px;
 }
 
+.card__btn_saved:hover {
+  transition: .1s ease-in-out;
+}
+
 .card__btn_active {
   width: 21px;
   height: 21px;
   background: url(../../images/saved_btn.svg) no-repeat center / cover;
-  transition: .1s ease-in-out;
-}
-
-.card:hover .card__btn {
-  opacity: 1;
 }
 
 .card__img {

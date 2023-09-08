@@ -23,6 +23,10 @@
   transition: .1s ease-in-out;
 }
 
+.filter__pseudo-item:hover {
+  opacity: .8;
+}
+
 .filter__checkbox-text {
   font-size: 12px;
   font-weight: 400;
