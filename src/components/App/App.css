@@ -5,3 +5,7 @@
   color: #fff;
   text-rendering: optimizeLegibility;
 }
+
+.root {
+  background-color: #202020;
+}

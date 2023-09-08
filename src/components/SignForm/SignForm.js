@@ -11,13 +11,11 @@ function SignForm({ name, title, children, textButton, pathname }) {
       name={name}
       id={name}
       >
-        <div className='form__container'>
-          <Logo />
-          <h2 className='form__title'>{title}</h2>
-          <fieldset className='form__inputs'>
-            {children}
-          </fieldset>
-        </div>
+        <Logo />
+        <h2 className='form__title'>{title}</h2>
+        <fieldset className={`form__inputs ${pathname === '/signin' && 'form__inputs_margin-bottom'}`}>
+          {children}
+        </fieldset>
         <div className='form__button-container'>
           <FormButton textButton={textButton} errorMessage='Ошибка' />
           <p className='form__caption'>

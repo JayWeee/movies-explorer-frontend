@@ -5,7 +5,7 @@ import AuthNavigation from "../AuthNavigation/AuthNavigation";
 import Logo from "../Logo/Logo";
 
 function Header() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isSidebarActive, setIsSidebarActive] = useState(false);
 
   function handleClick() {
