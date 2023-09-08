@@ -16,11 +16,13 @@ function Login({ pathname }) {
           label='E-mail'
           name='email'
           errMessage='Что-то пошло не так...'
+          placeholder='pochta@yandex.ru'
         />
         <Input
           label='Пароль'
           name='password'
           errMessage='Что-то пошло не так...'
+          placeholder='password'
         />
       </SignForm>
     </section>

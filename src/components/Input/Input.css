@@ -17,6 +17,10 @@
   outline: none;
 }
 
+.input__field:focus {
+  outline: 1px solid white;
+}
+
 .input__error {
   display: block;
   color: #EE3465;

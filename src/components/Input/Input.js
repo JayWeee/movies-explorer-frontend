@@ -1,7 +1,7 @@
 import React from 'react';
 import './Input.css';
 
-function Input({ label, name, value, errMessage }) {
+function Input({ label, name, value, errMessage, placeholder }) {
   return (
     <div className='input'>
       <label className='input__label'>
@@ -12,6 +12,7 @@ function Input({ label, name, value, errMessage }) {
           value={value}
           name={name}
           id={`${name}-input`}
+          placeholder={placeholder}
           required
         />
       </label>

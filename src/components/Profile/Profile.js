@@ -36,6 +36,7 @@ function Profile() {
                   name='name'
                   id='name-input'
                   disabled={disabled}
+                  placeholder='Виталий'
                   required
                 />
               </label>
@@ -50,6 +51,7 @@ function Profile() {
                   name='email'
                   id='email-input'
                   disabled={disabled}
+                  placeholder='pochta@yandex.ru'
                   required
                 />
               </label>

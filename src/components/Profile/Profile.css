@@ -41,6 +41,7 @@
   font-size: 11px;
   font-weight: 500;
   white-space: nowrap;
+  gap: 10px;
 }
 
 .profile__input-field {
@@ -51,6 +52,12 @@
   outline: none;
   text-align: end;
   padding: 2px 0;
+}
+
+.profile__input-field:focus {
+  /* border-bottom: 1px solid white; */
+  outline: 1px solid white;
+  border-radius: 5px;
 }
 
 .profile__input-error {
