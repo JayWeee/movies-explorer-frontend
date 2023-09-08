@@ -26,7 +26,8 @@
 .techs__list {
   padding: 0 0 100px;
   margin: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 90px));
   justify-content: center;
   gap: 10px;
 }
@@ -62,6 +63,7 @@
 
   .techs__list {
     padding-bottom: 90px;
+    grid-template-columns: repeat(auto-fit, minmax(84px, 84px));
   }
 
   .techs__item {
@@ -91,8 +93,6 @@
   }
 
   .techs__list {
-    flex-wrap: wrap;
-    justify-content: flex-start;
     max-width: calc(100% - 106px);
     margin: 0 auto;
     padding-bottom: 70px;

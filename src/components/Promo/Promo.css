@@ -4,7 +4,8 @@
 }
 
 .promo__container {
-  max-width: calc(1280px - 80px);
+  max-width: 1200px;
+  width: calc(100% - 80px);
   border-radius: 10px;
   background-color: #272727;
   padding: 160px 0 30px;
@@ -27,7 +28,7 @@
 
 @media screen and (max-width: 768px) {
   .promo__container {
-    max-width: calc(100% - 40px);
+    width: calc(100% - 40px);
     padding-top: 350px;
   }
 
@@ -47,7 +48,7 @@
   }
 
   .promo__container {
-    max-width: calc(100% - 28px);
+    width: calc(100% - 28px);
     padding: 220px 0 16px;
   }
 

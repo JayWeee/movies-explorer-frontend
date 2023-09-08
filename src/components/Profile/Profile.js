@@ -25,39 +25,37 @@ function Profile() {
           id='profile'
           onSubmit={handleSubmit}
         >
-          <div className='profile__form-container'>
-            <h2 className='profile__form-title'>Привет, Виталий!</h2>
-            <fieldset className='profile__inputs'>
-              <div className='profile__input-container'>
-                <label className='profile__input-label'>
-                  Имя
-                  <input
-                    className='profile__input-field'
-                    type='text'
-                    name='name'
-                    id='name-input'
-                    disabled={disabled}
-                    required
-                  />
-                </label>
-                <span className='profile__input-error'>Ошибка</span>
-              </div>
-              <div className='profile__input-container'>
-                <label className='profile__input-label'>
-                  E-mail
-                  <input
-                    className='profile__input-field'
-                    type='text'
-                    name='email'
-                    id='email-input'
-                    disabled={disabled}
-                    required
-                  />
-                </label>
-                <span className='profile__input-error'>Ошибка</span>
-              </div>
-            </fieldset>
-          </div>
+          <h2 className='profile__form-title'>Привет, Виталий!</h2>
+          <fieldset className='profile__inputs'>
+            <div className='profile__input-container'>
+              <label className='profile__input-label'>
+                Имя
+                <input
+                  className='profile__input-field'
+                  type='text'
+                  name='name'
+                  id='name-input'
+                  disabled={disabled}
+                  required
+                />
+              </label>
+              <span className='profile__input-error'>Ошибка</span>
+            </div>
+            <div className='profile__input-container'>
+              <label className='profile__input-label'>
+                E-mail
+                <input
+                  className='profile__input-field'
+                  type='text'
+                  name='email'
+                  id='email-input'
+                  disabled={disabled}
+                  required
+                />
+              </label>
+              <span className='profile__input-error'>Ошибка</span>
+            </div>
+          </fieldset>
           {isEdit ? (
             <FormButton textButton='Сохранить' />
           ) : (
