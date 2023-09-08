@@ -11,10 +11,10 @@ function Navigation({ isSidebarActive, setIsSidebarActive }) {
   return (
     <div className={`navigation ${!isSidebarActive && 'navigation_hidden'}`}>
       <div className='navigation__container'>
-        <input
+        <button
           className='navigation__button-close'
-          type='button'
           onClick={handleClick}
+          value=''
         />
         <nav className="navigation__links">
           <div className='navigation__links-container'>

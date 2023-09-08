@@ -6,7 +6,7 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 function MoviesCardList({ onSavedPage }) {
 
   return (
-    <section className='cards'>
+    <div className='cards'>
       <div className='grid-container'>
         {
           movies.map((movie) => ((
@@ -18,7 +18,7 @@ function MoviesCardList({ onSavedPage }) {
           )))
         }
       </div>
-    </section>
+    </div>
   );
 }
 

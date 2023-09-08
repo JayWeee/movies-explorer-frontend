@@ -8,7 +8,7 @@ import Footer from '../Footer/Footer';
 
 function Movies() {
   return (
-    <section className='movies'>
+    <section className='movies' aria-label='Фильмы'>
       <Header />
       <SearchForm />
       <MoviesCardList />

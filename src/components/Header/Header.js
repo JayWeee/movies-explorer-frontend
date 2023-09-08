@@ -17,7 +17,11 @@ function Header() {
       <Logo />
       {loggedIn ? (
         <>
-          <input className='header__sidebar-button' type='button' onClick={handleClick} />
+          <button
+            className='header__sidebar-button'
+            onClick={handleClick}
+            value=''
+          />
           <Navigation isSidebarActive={isSidebarActive} setIsSidebarActive={setIsSidebarActive} />
         </>
       ) : (

@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer';
 
 function SavedMovies() {
   return (
-    <section className='saved-movies'>
+    <section className='saved-movies' aria-label='Сохраненные фильмы'>
       <Header />
       <SearchForm />
       <MoviesCardList onSavedPage={true} />
