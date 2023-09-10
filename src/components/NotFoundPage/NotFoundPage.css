@@ -2,7 +2,6 @@
   text-align: center;
   padding: 246px 0 60px;
   box-sizing: border-box;
-  height: 100vh;
 }
 
 .not-found__error {
@@ -26,10 +25,25 @@
   text-decoration: none;
   cursor: pointer;
   background-color: transparent;
+  transition: opacity .2s linear;
+}
+
+.not-found__button:hover {
+  opacity: .7;
 }
 
 @media screen and (max-width: 768px) {
   .not-found {
-    padding-top: 408px;
+    padding: 408px 0 222px;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .not-found {
+    padding: 329px 0 30px;
+  }
+
+  .not-found__text {
+    margin-bottom: 284px;
   }
 }
