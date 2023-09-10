@@ -1,0 +1,17 @@
+.login {
+  max-width: 100%;
+  padding: 70px 0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .login {
+    padding: 232px 0;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .login {
+    padding: 56px 0 30px;
+  }
+}

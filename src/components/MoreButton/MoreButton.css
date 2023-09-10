@@ -1,0 +1,38 @@
+.more {
+display: flex;
+justify-content: center;
+padding: 78px 0 80px;
+max-width: calc(100% - 140px);
+margin: 0 auto;
+}
+
+.more__btn {
+  color: #FFF;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #202020;
+  border: 1px solid #424242;
+  border-radius: 6px;
+  width: 320px;
+  padding: 11px 0 9px;
+  cursor: pointer;
+  transition: opacity .2s linear;
+}
+
+.more__btn:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 768px) {
+  .more {
+    max-width: calc(100% - 60px);
+    padding-top: 62px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .more {
+    max-width: calc(100% - 80px);
+  }
+}

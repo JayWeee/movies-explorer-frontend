@@ -1,0 +1,33 @@
+.form__error {
+  display: block;
+  color: #FF004C;
+  text-align: center;
+  font-size: 11px;
+  margin-bottom: 20px;
+  visibility: hidden;
+}
+
+.form__button {
+  width: 100%;
+  padding: 13px 0 15px;
+  background-color: #4285F4;
+  border-radius: 3px;
+  border: none;
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: opacity .2s linear;
+}
+
+.form__button:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 426px) {
+  .form__button {
+    font-size: 12px;
+    line-height: normal;
+  }
+}

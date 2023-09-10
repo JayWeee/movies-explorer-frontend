@@ -1,0 +1,11 @@
+.App {
+  width: 100%;
+  background-color: #202020;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #fff;
+  text-rendering: optimizeLegibility;
+}
+
+.root {
+  background-color: #202020;
+}

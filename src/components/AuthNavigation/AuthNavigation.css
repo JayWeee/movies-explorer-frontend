@@ -1,0 +1,54 @@
+.auth-navigation {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.auth-navigation__register-link {
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  transition: opacity .2s linear;
+}
+
+.auth-navigation__signin-link {
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.33;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  background-color: #3DDC84;
+  border-radius: 3px;
+  transition: opacity .2s linear;
+}
+
+.auth-navigation__register-link:hover {
+  opacity: .7;
+}
+
+.auth-navigation__signin-link:hover {
+  opacity: .8;
+}
+
+@media screen and (max-width: 320px) {
+  .auth-navigation {
+    gap: 14px;
+  }
+
+  .auth-navigation__register-link {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .auth-navigation__signin-link {
+    font-size: 10px;
+    line-height: 1.6;
+    max-width: 54px;
+    padding: 5px 12px;
+  }
+}
