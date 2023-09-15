@@ -2,14 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
 import FormButton from "../FormButton/FormButton";
-import { useForms } from '../../hooks/useForms';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 function Profile({ handleUpdateUser, handleSignOut, loggedIn }) {
   const [isEdit, setIsEdit] = useState(false);
   const disabled = !isEdit && "disabled";
 
-  const { values, setValues, handleChange } = useForms({});
+  const { values, setValues, handleChange } = useFormWithValidation({});
   const { name, email } = useContext(CurrentUserContext);
 
   useEffect(() => {

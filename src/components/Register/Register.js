@@ -2,11 +2,11 @@ import React from 'react';
 import './Register.css';
 import SignForm from '../SignForm/SignForm';
 import Input from '../Input/Input';
-import { useForms } from '../../hooks/useForms';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
 function Register({ pathname, handleRegister }) {
 
-  const { values, handleChange } = useForms({});
+  const { values, handleChange } = useFormWithValidation({});
 
   function handleSubmit(e) {
     e.preventDefault();

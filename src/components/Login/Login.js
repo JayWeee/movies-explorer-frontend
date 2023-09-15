@@ -2,11 +2,11 @@ import React from 'react';
 import './Login.css';
 import SignForm from '../SignForm/SignForm';
 import Input from '../Input/Input';
-import { useForms } from '../../hooks/useForms';
+import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
 function Login({ pathname, handleLogin }) {
 
-  const { values, handleChange } = useForms();
+  const { values, handleChange } = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
