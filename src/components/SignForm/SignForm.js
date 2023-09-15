@@ -4,12 +4,20 @@ import Logo from '../Logo/Logo';
 import { Link } from 'react-router-dom';
 import FormButton from '../FormButton/FormButton';
 
-function SignForm({ name, title, children, textButton, pathname }) {
+function SignForm({
+  name,
+  title,
+  children,
+  textButton,
+  pathname,
+  handleSubmit
+}) {
   return (
       <form
       className='form'
       name={name}
       id={name}
+      onSubmit={handleSubmit}
       >
         <Logo />
         <h2 className='form__title'>{title}</h2>

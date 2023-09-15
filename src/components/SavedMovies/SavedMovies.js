@@ -5,10 +5,10 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-function SavedMovies() {
+function SavedMovies({ loggedIn }) {
   return (
     <section className='saved-movies' aria-label='Сохраненные фильмы'>
-      <Header />
+      <Header loggedIn={loggedIn} />
       <SearchForm />
       <MoviesCardList onSavedPage={true} />
       <div className='saved-movies__devider' />

@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Header.css";
 import Navigation from "../Navigation/Navigation";
 import AuthNavigation from "../AuthNavigation/AuthNavigation";
 import Logo from "../Logo/Logo";
+import { AppContext } from '../../contexts/AppContext';
 
 function Header() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const loggedIn = useContext(AppContext);
   const [isSidebarActive, setIsSidebarActive] = useState(false);
 
   function handleClick() {

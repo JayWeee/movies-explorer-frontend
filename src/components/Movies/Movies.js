@@ -6,10 +6,10 @@ import MoreButton from '../MoreButton/MoreButton';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
-function Movies() {
+function Movies({ loggedIn }) {
   return (
     <section className='movies' aria-label='Фильмы'>
-      <Header />
+      <Header loggedIn={loggedIn} />
       <SearchForm />
       <MoviesCardList />
       <MoreButton />
