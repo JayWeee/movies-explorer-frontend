@@ -9,7 +9,7 @@ function Profile({ handleUpdateUser, handleSignOut, loggedIn }) {
   const [isEdit, setIsEdit] = useState(false);
   const disabled = !isEdit && "disabled";
 
-  const { values, setValues, handleChange } = useFormWithValidation({});
+  const { values, setValues, handleChange, errors, isValid } = useFormWithValidation({});
   const { name, email } = useContext(CurrentUserContext);
 
   useEffect(() => {
@@ -34,6 +34,7 @@ function Profile({ handleUpdateUser, handleSignOut, loggedIn }) {
           name='profile'
           id='profile'
           onSubmit={handleSubmit}
+          noValidate
         >
           <h2 className='profile__form-title'>Привет, {name}!</h2>
           <fieldset className='profile__inputs'>
@@ -52,7 +53,7 @@ function Profile({ handleUpdateUser, handleSignOut, loggedIn }) {
                   required
                 />
               </label>
-              <span className='profile__input-error'>Ошибка</span>
+              <span className='profile__input-error'>{errors.name}</span>
             </div>
             <div className='profile__input-container'>
               <label className='profile__input-label'>
@@ -69,11 +70,11 @@ function Profile({ handleUpdateUser, handleSignOut, loggedIn }) {
                   required
                 />
               </label>
-              <span className='profile__input-error'>Ошибка</span>
+              <span className='profile__input-error'>{errors.email}</span>
             </div>
           </fieldset>
           {isEdit ? (
-            <FormButton textButton='Сохранить' />
+            <FormButton textButton='Сохранить' isValid={isValid} />
           ) : (
             <div className='profile__buttons'>
               <button className='profile__btn-edit' type='button' onClick={handleEdit}>

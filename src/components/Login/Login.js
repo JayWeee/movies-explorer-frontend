@@ -6,11 +6,12 @@ import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
 function Login({ pathname, handleLogin }) {
 
-  const { values, handleChange } = useFormWithValidation();
+  const { values, handleChange, errors, resetForm, isValid } = useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
     handleLogin(values);
+    resetForm();
   }
 
   return (
@@ -21,24 +22,26 @@ function Login({ pathname, handleLogin }) {
         textButton='Войти'
         pathname={pathname}
         handleSubmit={handleSubmit}
+        isValid={isValid}
       >
         <Input
           label='E-mail'
           name='email'
-          errMessage='Что-то пошло не так...'
           placeholder='pochta@yandex.ru'
           handleChange={handleChange}
           value={values.email || ''}
           type='email'
+          errMessage={errors}
         />
         <Input
           label='Пароль'
           name='password'
-          errMessage='Что-то пошло не так...'
           placeholder='password'
           handleChange={handleChange}
           value={values.password || ''}
           type='password'
+          errMessage={errors}
+          minLength='8'
         />
       </SignForm>
     </section>

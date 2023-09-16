@@ -10,7 +10,8 @@ function SignForm({
   children,
   textButton,
   pathname,
-  handleSubmit
+  handleSubmit,
+  isValid
 }) {
   return (
       <form
@@ -18,6 +19,7 @@ function SignForm({
       name={name}
       id={name}
       onSubmit={handleSubmit}
+      noValidate
       >
         <Logo />
         <h2 className='form__title'>{title}</h2>
@@ -25,7 +27,7 @@ function SignForm({
           {children}
         </fieldset>
         <div className='form__button-container'>
-          <FormButton textButton={textButton} errorMessage='Ошибка' />
+          <FormButton textButton={textButton} isValid={isValid} errorMessage='Ошибка' />
           <p className='form__caption'>
             {pathname === '/signup' ? 'Уже зарегистрированы?' : pathname === '/signin' && 'Ещё не зарегистрированы?'}
             <Link to={pathname === '/signup' ? '/signin' : pathname === '/signin' && '/signup'} className='form__caption-link'>

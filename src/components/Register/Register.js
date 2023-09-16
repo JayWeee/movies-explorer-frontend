@@ -6,11 +6,12 @@ import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
 function Register({ pathname, handleRegister }) {
 
-  const { values, handleChange } = useFormWithValidation({});
+  const { values, handleChange, errors, resetForm, isValid } = useFormWithValidation({});
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleRegister(values)
+    handleRegister(values);
+    resetForm();
   }
 
   return (
@@ -21,20 +22,22 @@ function Register({ pathname, handleRegister }) {
       textButton='Зарегистрироваться'
       pathname={pathname}
       handleSubmit={handleSubmit}
+      isValid={isValid}
       >
         <Input
           label='Имя'
           name='name'
-          errMessage='Что-то пошло не так...'
+          errMessage={errors}
           placeholder='Виталий'
           handleChange={handleChange}
           value={values.name || ''}
           type='text'
+          minLength='2'
         />
         <Input
           label='E-mail'
           name='email'
-          errMessage='Что-то пошло не так...'
+          errMessage={errors}
           placeholder='pochta@yandex.ru'
           handleChange={handleChange}
           value={values.email || ''}
@@ -43,11 +46,12 @@ function Register({ pathname, handleRegister }) {
         <Input
           label='Пароль'
           name='password'
-          errMessage='Что-то пошло не так...'
+          errMessage={errors}
           placeholder='password'
           handleChange={handleChange}
           value={values.password || ''}
           type='password'
+          minLength='8'
         />
       </SignForm>
     </section>

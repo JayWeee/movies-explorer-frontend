@@ -9,6 +9,7 @@ function Input({
   placeholder,
   handleChange,
   type,
+  minLength,
 }) {
   return (
     <div className='input'>
@@ -22,10 +23,11 @@ function Input({
           id={`${name}-input`}
           placeholder={placeholder}
           onChange={handleChange}
+          minLength={minLength}
           required
         />
       </label>
-      <span className='input__error'>{errMessage}</span>
+      <span className='input__error'>{errMessage[name]}</span>
     </div>
   );
 }

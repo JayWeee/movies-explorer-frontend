@@ -21,6 +21,12 @@
   transition: opacity .2s linear;
 }
 
+.form__button_disabled {
+  cursor: default;
+  background-color: #6A5ACD;
+  opacity: .8;
+}
+
 .form__button:hover {
   opacity: .8;
 }
