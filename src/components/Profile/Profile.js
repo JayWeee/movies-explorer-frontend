@@ -5,7 +5,7 @@ import FormButton from "../FormButton/FormButton";
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile({ handleUpdateUser, handleSignOut, loggedIn }) {
+function Profile({ handleUpdateUser, handleSignOut }) {
   const [isEdit, setIsEdit] = useState(false);
   const disabled = !isEdit && "disabled";
 
@@ -28,7 +28,7 @@ function Profile({ handleUpdateUser, handleSignOut, loggedIn }) {
 
   return (
     <section className='profile'>
-      <Header loggedIn={loggedIn} />
+      <Header />
         <form
           className='profile__form'
           name='profile'

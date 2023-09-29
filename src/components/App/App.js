@@ -13,7 +13,6 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import * as MainApi from '../../utils/MainApi';
 
 function App() {
-
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -23,56 +22,62 @@ function App() {
 
   function handleUpdateUser({ name, email }) {
     MainApi.setUserInfo({ name, email })
-      .then(userData => setCurrentUser(userData))
+      .then((userData) => setCurrentUser(userData))
       .catch(console.error);
   }
 
   function handleLogin({ email, password }) {
-    MainApi
-      .authorize({ email, password})
+    setIsLoaded(false);
+    MainApi.authorize({ email, password })
       .then((userData) => {
         if (userData.userId) {
           localStorage.setItem('userId', userData.userId);
           tokenCheck();
-          navigate('/', { replace: true });
         }
       })
       .catch(console.error)
+      .finally(() => {
+        setIsLoaded(true);
+        setLoggedIn(true);
+        navigate('/movies', { replace: true });
+      });
   }
 
   function handleRegister({ name, email, password }) {
-    MainApi
-      .register({ name, email, password })
+    MainApi.register({ name, email, password })
       .then((userData) => {
         if (userData.userId) {
           localStorage.setItem('userId', userData.userId);
-          tokenCheck()
-          navigate('/', { replace: true });
+          tokenCheck();
         }
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => {
+        setLoggedIn(true);
+        setIsLoaded(true);
+        navigate('/movies', { replace: true });
+      });
   }
 
   function handleSignOut() {
     localStorage.removeItem('userId');
     MainApi.removeCoockies().catch(console.error);
-    setLoggedIn(false)
-    navigate('/', { replace: true })
+    setLoggedIn(false);
+    navigate('/', { replace: true });
   }
 
   function tokenCheck() {
     const userId = localStorage.getItem('userId');
 
     if (userId) {
-      MainApi
-        .getUserInfo()
-        .then(userData => {
+      MainApi.getUserInfo()
+        .then((userData) => {
           setCurrentUser(userData);
         })
         .finally(() => {
           setLoggedIn(true);
           setIsLoaded(true);
-        })
+        });
     } else {
       setIsLoaded(true);
     }
@@ -83,27 +88,19 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {isLoaded && 
+    <div className='App'>
+      {isLoaded && (
         <AppContext.Provider value={loggedIn}>
           <CurrentUserContext.Provider value={currentUser}>
             <Routes>
               <Route path='/' element={<Main />} />
               <Route
                 path='/movies'
-                element={
-                  <ProtectedRoute
-                    element={Movies}
-                  />
-                }
+                element={<ProtectedRoute element={Movies} />}
               />
               <Route
                 path='/saved-movies'
-                element={
-                  <ProtectedRoute
-                    element={SavedMovies}
-                  />
-                }
+                element={<ProtectedRoute element={SavedMovies} />}
               />
               <Route
                 path='/profile'
@@ -116,13 +113,26 @@ function App() {
                   />
                 }
               />
-              <Route path='/signup' element={<Register handleRegister={handleRegister} pathname={pathname} />} />
-              <Route path='/signin' element={<Login handleLogin={handleLogin} pathname={pathname} />} />
+              <Route
+                path='/signup'
+                element={
+                  <Register
+                    handleRegister={handleRegister}
+                    pathname={pathname}
+                  />
+                }
+              />
+              <Route
+                path='/signin'
+                element={
+                  <Login handleLogin={handleLogin} pathname={pathname} />
+                }
+              />
               <Route path='*' element={<NotFoundPage />} />
             </Routes>
           </CurrentUserContext.Provider>
         </AppContext.Provider>
-      }
+      )}
     </div>
   );
 }

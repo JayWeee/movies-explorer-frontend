@@ -1,0 +1,31 @@
+.request-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;
+  width: calc(100% - 140px);
+  height: 140px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.request-message__text {
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .request-message {
+    width: calc(100% - 60px);
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .request-message {
+    width: calc(100% - 28px);
+  }
+
+  .request-message__text {
+    font-size: 11px;
+    line-height: 1.62;
+  }
+}

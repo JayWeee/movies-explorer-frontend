@@ -1,19 +1,29 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
-function SearchForm() {
+function SearchForm({ getMovies }) {
+  const { values, handleChange, isValid } = useFormWithValidation({});
 
-  const { values, handleChange, errors, resetForm, isValid } = useFormWithValidation({});
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    isValid && setError('');
+  }, [isValid]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    resetForm();
+    isValid ? getMovies() : setError('Нужно ввести ключевое слово');
   }
 
   return (
-    <form className='search-form' name='search-form' onSubmit={handleSubmit} noValidate>
+    <form
+      className='search-form'
+      name='search-form'
+      onSubmit={handleSubmit}
+      noValidate
+    >
       <div className='search-form__container'>
         <input
           className='search-form__input'
@@ -25,14 +35,9 @@ function SearchForm() {
           onChange={handleChange}
           required
         />
-        <button
-          disabled={!isValid && 'disabled'}
-          className={
-            `search-form__submit-btn ${!isValid && 'search-form__submit-btn_disabled'}`
-          }
-        />
+        <button className='search-form__submit-btn' />
       </div>
-      <span className='search-form__input-error'>{errors.search}</span>
+      <span className='search-form__input-error'>{error}</span>
       <FilterCheckbox />
     </form>
   );

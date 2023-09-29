@@ -20,6 +20,10 @@ margin: 0 auto;
   transition: opacity .2s linear;
 }
 
+.more__btn_hidden {
+  visibility: hidden;
+}
+
 .more__btn:hover {
   opacity: .8;
 }
