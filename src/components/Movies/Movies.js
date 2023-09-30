@@ -17,12 +17,12 @@ function Movies() {
   const [moreButtonHidden, setMoreButtonHidden] = useState(true); // Показать/Скрыть кнопку еще
   const [isLoading, setIsLoading] = useState(false); // Стейт ожидания ответа от сервера
   const [error, setError] = useState(false); // Стейт ошибки при получении ошибки от сервера
-
-  // const [shortMoviesChecker, setShortMoviesChecker] = useState(false);
-
+  const [shortMoviesChecker, setShortMoviesChecker] = useState(false);
+  
+    const searchRequest = JSON.parse(localStorage.getItem('searchText'));
 
   function checkWindowSize() {
-      const { innerWidth } = window;
+    const { innerWidth } = window;
     if (innerWidth >= 1100) {
       setNumberOfMoviesShow(12);
       setShowMoreMovies(3);
@@ -36,19 +36,33 @@ function Movies() {
   }
 
   useEffect(() => {
-    window.addEventListener('resize', checkWindowSize)
+    window.addEventListener('resize', checkWindowSize);
     return () => {
-      window.removeEventListener('resize', checkWindowSize)
-    }
+      window.removeEventListener('resize', checkWindowSize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const moviesCheckbox = JSON.parse(localStorage.getItem('checkboxState'));
+    const movies = JSON.parse(localStorage.getItem('movies'));
+    checkWindowSize();
+    movies && setMoviesList(movies);
+    moviesCheckbox && setShortMoviesChecker(moviesCheckbox);
   }, [])
 
-  function getMovies() {
+  function populateStorage(values, moviesData, shortMoviesChecker) {
+    localStorage.setItem('movies', JSON.stringify(moviesData));
+    localStorage.setItem('searchText', JSON.stringify(values));
+    localStorage.setItem('checkboxState', shortMoviesChecker);
+  }
+
+  function getMovies(values) {
     setIsLoading(true);
     setError(false);
     MoviesApi.getMovies()
       .then((moviesData) => {
         setMoviesList(moviesData);
-        checkWindowSize();
+        populateStorage(values, moviesData, shortMoviesChecker);
       })
       .catch(() => {
         setError(true);
@@ -58,24 +72,31 @@ function Movies() {
       });
   }
 
-  useEffect(() => {
-    setShowMoviesList(moviesList.slice(0, numberOfMoviesShow));
-  }, [numberOfMoviesShow, moviesList]);
 
   useEffect(() => {
+    setShowMoviesList(moviesList.slice(0, numberOfMoviesShow));
     showMoviesList.length === moviesList.length
       ? setMoreButtonHidden(true)
       : setMoreButtonHidden(false);
-  }, [moviesList.length, showMoviesList.length]);
+  }, [numberOfMoviesShow, moviesList, showMoviesList.length]);
 
   function showMore() {
     setNumberOfMoviesShow(numberOfMoviesShow + showMoreMovies);
   }
 
+  function handleShortMoviesChange() {
+    setShortMoviesChecker(!shortMoviesChecker);
+  }
+
   return (
     <section className='movies' aria-label='Фильмы'>
       <Header />
-      <SearchForm getMovies={getMovies} />
+      <SearchForm
+        getMovies={getMovies}
+        handleShortMoviesChange={handleShortMoviesChange}
+        shortMoviesChecker={shortMoviesChecker}
+        searchRequest={searchRequest}
+      />
       {isLoading ? (
         <Preloader />
       ) : error ? (

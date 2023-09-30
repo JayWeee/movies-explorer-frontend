@@ -61,6 +61,9 @@ function App() {
 
   function handleSignOut() {
     localStorage.removeItem('userId');
+    localStorage.removeItem('checkboxState');
+    localStorage.removeItem('searchText');
+    localStorage.removeItem('movies');
     MainApi.removeCoockies().catch(console.error);
     setLoggedIn(false);
     navigate('/', { replace: true });
