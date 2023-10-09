@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
 import RequestMessage from '../RequestMessage/RequestMessage';
 import * as MoviesApi from '../../utils/MoviesApi';
+import { filter } from '../../utils/utils';
 
 function Movies() {
   const [moviesList, setMoviesList] = useState([]); // Массив со всеми фильмами
@@ -19,7 +20,7 @@ function Movies() {
   const [error, setError] = useState(false); // Стейт ошибки при получении ошибки от сервера
   const [shortMoviesChecker, setShortMoviesChecker] = useState(false);
   
-    const searchRequest = JSON.parse(localStorage.getItem('searchText'));
+  const searchRequest = JSON.parse(localStorage.getItem('searchText'));
 
   function checkWindowSize() {
     const { innerWidth } = window;
@@ -35,6 +36,37 @@ function Movies() {
     }
   }
 
+  function showMore() {
+    setNumberOfMoviesShow(numberOfMoviesShow + showMoreMovies);
+  }
+
+  function handleShortMoviesChange() {
+    setShortMoviesChecker(!shortMoviesChecker);
+  }
+
+  function populateStorage(values, moviesData, shortMoviesChecker) {
+    localStorage.setItem('movies', JSON.stringify(moviesData));
+    localStorage.setItem('searchText', JSON.stringify(values));
+    localStorage.setItem('checkboxState', shortMoviesChecker);
+  }
+
+  function getMovies(values) {
+    setIsLoading(true);
+    setError(false);
+    MoviesApi.getMovies()
+      .then((moviesData) => {
+        const filteredMovies = filter(moviesData, values);
+        setMoviesList(filteredMovies);
+        populateStorage(values, filteredMovies, shortMoviesChecker);
+      })
+      .catch(() => {
+        setError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
   useEffect(() => {
     window.addEventListener('resize', checkWindowSize);
     return () => {
@@ -48,30 +80,7 @@ function Movies() {
     checkWindowSize();
     movies && setMoviesList(movies);
     moviesCheckbox && setShortMoviesChecker(moviesCheckbox);
-  }, [])
-
-  function populateStorage(values, moviesData, shortMoviesChecker) {
-    localStorage.setItem('movies', JSON.stringify(moviesData));
-    localStorage.setItem('searchText', JSON.stringify(values));
-    localStorage.setItem('checkboxState', shortMoviesChecker);
-  }
-
-  function getMovies(values) {
-    setIsLoading(true);
-    setError(false);
-    MoviesApi.getMovies()
-      .then((moviesData) => {
-        setMoviesList(moviesData);
-        populateStorage(values, moviesData, shortMoviesChecker);
-      })
-      .catch(() => {
-        setError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }
-
+  }, []);
 
   useEffect(() => {
     setShowMoviesList(moviesList.slice(0, numberOfMoviesShow));
@@ -79,14 +88,6 @@ function Movies() {
       ? setMoreButtonHidden(true)
       : setMoreButtonHidden(false);
   }, [numberOfMoviesShow, moviesList, showMoviesList.length]);
-
-  function showMore() {
-    setNumberOfMoviesShow(numberOfMoviesShow + showMoreMovies);
-  }
-
-  function handleShortMoviesChange() {
-    setShortMoviesChecker(!shortMoviesChecker);
-  }
 
   return (
     <section className='movies' aria-label='Фильмы'>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './MoviesCard.css';
+import { getTimeFromMins } from '../../utils/utils';
 
 function MoviesCard({ card, onSavedPage }) {
   const [saved, setSaved] = useState(false);
@@ -10,12 +11,6 @@ function MoviesCard({ card, onSavedPage }) {
 
   function handleChange() {
     setSaved(true);
-  }
-
-  function getTimeFromMins(mins) {
-    const hours = Math.trunc(mins / 60);
-    const minutes = mins % 60;
-    return hours + 'ч ' + minutes + 'м';
   }
 
   return (
