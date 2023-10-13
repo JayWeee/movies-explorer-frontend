@@ -19,6 +19,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
+  const [savedMovies, setSavedMovies] = useState([]);
 
   function handleUpdateUser({ name, email }) {
     MainApi.setUserInfo({ name, email })
@@ -69,6 +70,44 @@ function App() {
     navigate('/', { replace: true });
   }
 
+  function getSavedMovies() {
+    MainApi.getSavedMovies()
+      .then((movies) => {
+        setSavedMovies(movies.reverse());
+      })
+      .catch(console.error);
+  }
+
+  function handleSaveButtonClick(movie) {
+    const isSaved = savedMovies.some((m) => m.movieId === movie.id);
+    if (isSaved) {
+      const savedMovieId = savedMovies.find((m) => m.movieId === movie.id)._id;
+      MainApi.deleteMovie(savedMovieId)
+        .then(() =>
+          setSavedMovies((movies) =>
+            movies.filter((m) => m.movieId !== movie.id)
+          )
+        )
+        .catch(console.error);
+    } else {
+      MainApi.createMovie(movie)
+        .then((savedMovie) => {
+          setSavedMovies([savedMovie, ...savedMovies]);
+        })
+        .catch(console.error);
+    }
+  }
+
+  function handleDeleteSavedMovie(movie) {
+    MainApi.deleteMovie(movie._id)
+      .then(() =>
+        setSavedMovies((movies) =>
+          movies.filter((m) => m.movieId !== movie.movieId)
+        )
+      )
+      .catch(console.error);
+  }
+
   function tokenCheck() {
     const userId = localStorage.getItem('userId');
 
@@ -76,7 +115,9 @@ function App() {
       MainApi.getUserInfo()
         .then((userData) => {
           setCurrentUser(userData);
+          getSavedMovies();
         })
+        .catch(console.error)
         .finally(() => {
           setLoggedIn(true);
           setIsLoaded(true);
@@ -88,6 +129,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -99,11 +141,23 @@ function App() {
               <Route path='/' element={<Main />} />
               <Route
                 path='/movies'
-                element={<ProtectedRoute element={Movies} />}
+                element={
+                  <ProtectedRoute
+                    element={Movies}
+                    savedMovies={savedMovies}
+                    handleSaveButtonClick={handleSaveButtonClick}
+                  />
+                }
               />
               <Route
                 path='/saved-movies'
-                element={<ProtectedRoute element={SavedMovies} />}
+                element={
+                  <ProtectedRoute
+                    element={SavedMovies}
+                    savedMovies={savedMovies}
+                    handleDeleteSavedMovie={handleDeleteSavedMovie}
+                  />
+                }
               />
               <Route
                 path='/profile'

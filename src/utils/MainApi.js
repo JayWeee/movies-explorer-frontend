@@ -1,4 +1,4 @@
-import { MAIN_API_BASE_URL, checkServerResponse } from './utils';
+import { MAIN_API_BASE_URL, checkServerResponse, imageLinkPrefix } from './utils';
 
 export function register({ name, email, password }) {
   return fetch(`${MAIN_API_BASE_URL}/signup`, {
@@ -79,43 +79,31 @@ export function getSavedMovies() {
     .then(checkServerResponse)
 }
 
-export function createMovie({
-  country,
-  director,
-  duration,
-  year,
-  description,
-  image,
-  trailerLink,
-  thumbnail,
-  movieId,
-  nameRU,
-  nameEN,
-}) {
+export function createMovie(movie) {  
   return fetch(`${MAIN_API_BASE_URL}/movies`, {
     method: 'POST',
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: {
-      country: country,
-      director: director,
-      duration: duration,
-      year: year,
-      description: description,
-      image: image,
-      trailerLink: trailerLink,
-      thumbnail: thumbnail,
-      movieId: movieId,
-      nameRU: nameRU,
-      nameEN: nameEN,
-    }
+    body: JSON.stringify({
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image: imageLinkPrefix + movie.image.url,
+      trailerLink: movie.trailerLink,
+      thumbnail: imageLinkPrefix + movie.image.formats.thumbnail.url,
+      movieId: movie.id,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN,
+    })
   })
     .then(checkServerResponse)
 }
 
-export function removeMovie({ movieId }) {
+export function deleteMovie(movieId) {
   return fetch(`${MAIN_API_BASE_URL}/movies/${movieId}`, {
     method: 'DELETE',
     credentials: 'include',

@@ -10,16 +10,16 @@ import RequestMessage from '../RequestMessage/RequestMessage';
 import * as MoviesApi from '../../utils/MoviesApi';
 import { filter } from '../../utils/utils';
 
-function Movies() {
+function Movies({ savedMovies, handleSaveButtonClick }) {
   const [moviesList, setMoviesList] = useState([]); // Массив со всеми фильмами
   const [showMoviesList, setShowMoviesList] = useState([]); // Массив с отображаемыми фильмами
   const [numberOfMoviesShow, setNumberOfMoviesShow] = useState(0); // Кол-во показываемых фильмов
-  const [showMoreMovies, setShowMoreMovies] = useState(0);
+  const [showMoreMovies, setShowMoreMovies] = useState(0); // сколько показывать фильмов при нажатии на кнопку еще
   const [moreButtonHidden, setMoreButtonHidden] = useState(true); // Показать/Скрыть кнопку еще
   const [isLoading, setIsLoading] = useState(false); // Стейт ожидания ответа от сервера
   const [error, setError] = useState(false); // Стейт ошибки при получении ошибки от сервера
   const [shortMoviesChecker, setShortMoviesChecker] = useState(false);
-  
+
   const searchRequest = JSON.parse(localStorage.getItem('searchText'));
 
   function checkWindowSize() {
@@ -55,7 +55,7 @@ function Movies() {
     setError(false);
     MoviesApi.getMovies()
       .then((moviesData) => {
-        const filteredMovies = filter(moviesData, values);
+        const filteredMovies = filter(moviesData, values, shortMoviesChecker);
         setMoviesList(filteredMovies);
         populateStorage(values, filteredMovies, shortMoviesChecker);
       })
@@ -93,7 +93,7 @@ function Movies() {
     <section className='movies' aria-label='Фильмы'>
       <Header />
       <SearchForm
-        getMovies={getMovies}
+        handleSearchMovies={getMovies}
         handleShortMoviesChange={handleShortMoviesChange}
         shortMoviesChecker={shortMoviesChecker}
         searchRequest={searchRequest}
@@ -103,7 +103,11 @@ function Movies() {
       ) : error ? (
         <RequestMessage />
       ) : (
-        <MoviesCardList moviesList={showMoviesList} />
+        <MoviesCardList
+          moviesList={showMoviesList}
+          savedMovies={savedMovies}
+          handleSaveButtonClick={handleSaveButtonClick}
+        />
       )}
       <MoreButton showMore={showMore} moreButtonHidden={moreButtonHidden} />
       <Footer />

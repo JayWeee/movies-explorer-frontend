@@ -4,7 +4,7 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
 function SearchForm({
-  getMovies,
+  handleSearchMovies,
   handleShortMoviesChange,
   shortMoviesChecker,
   searchRequest,
@@ -26,7 +26,7 @@ function SearchForm({
 
   function handleSubmit(e) {
     e.preventDefault();
-    isValid ? getMovies(values) : setError('Нужно ввести ключевое слово');
+    isValid ? handleSearchMovies(values) : setError('Нужно ввести ключевое слово');
   }
 
   return (

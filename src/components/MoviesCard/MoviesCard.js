@@ -1,16 +1,30 @@
-import { useState } from 'react';
+import React from 'react';
 import './MoviesCard.css';
-import { getTimeFromMins } from '../../utils/utils';
+import { getTimeFromMins, imageLinkPrefix } from '../../utils/utils';
+import { useLocation } from 'react-router-dom';
 
-function MoviesCard({ card, onSavedPage }) {
-  const [saved, setSaved] = useState(false);
-  const cardBtnClassName = `card__btn ${saved && 'card__btn_active'}`;
+function MoviesCard({
+  movie,
+  savedMovies,
+  handleSaveButtonClick,
+  handleDeleteSavedMovie,
+}) {
+  const { pathname } = useLocation();
+  const onSavedPage = pathname === '/saved-movies';
+  const isSaved = savedMovies.some((m) => m.movieId === movie.id);
+  const cardBtnClassName = `card__btn ${isSaved && 'card__btn_active'}`;
   const cardBtnSavedClassName = `card__btn ${onSavedPage && 'card__btn_saved'}`;
-  const cardBtnValue = saved ? '' : 'Сохранить';
-  const cardImage = `https://api.nomoreparties.co/${card.image.url}`;
+  const cardBtnValue = isSaved ? '' : 'Сохранить';
+  const cardImage = onSavedPage
+    ? movie.image
+    : imageLinkPrefix + movie.image.url;
 
-  function handleChange() {
-    setSaved(true);
+  function handleClick() {
+    handleSaveButtonClick(movie);
+  }
+
+  function handleDeleteMovie() {
+    handleDeleteSavedMovie(movie);
   }
 
   return (
@@ -20,14 +34,14 @@ function MoviesCard({ card, onSavedPage }) {
         <button
           className={onSavedPage ? cardBtnSavedClassName : cardBtnClassName}
           type='button'
-          onClick={handleChange}
+          onClick={onSavedPage ? handleDeleteMovie : handleClick}
         >
           {onSavedPage ? '' : cardBtnValue}
         </button>
       </div>
       <div className='card__description'>
-        <h2 className='card__title'>{card.nameRU}</h2>
-        <p className='card__duration'>{getTimeFromMins(card.duration)}</p>
+        <h2 className='card__title'>{movie.nameRU}</h2>
+        <p className='card__duration'>{getTimeFromMins(movie.duration)}</p>
       </div>
     </article>
   );

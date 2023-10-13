@@ -3,6 +3,8 @@ export const MAIN_API_BASE_URL = 'http://localhost:3000';
 
 export const MOVIES_API_BASE_URL = 'https://api.nomoreparties.co';
 
+export const imageLinkPrefix = 'https://api.nomoreparties.co';
+
 export function checkServerResponse(res) {
   return res.ok ? res.json() : Promise.reject(`Код ошибки: ${res.status}`);
 }
@@ -13,6 +15,8 @@ export function getTimeFromMins(mins) {
   return hours + 'ч ' + minutes + 'м';
 }
 
-export function filter(movies, searchQuerry) {
-  return movies.filter((filteredMovies) => filteredMovies.nameRU.toLowerCase().includes(searchQuerry.search.toLowerCase()));
+export function filter(movies, searchQuerry, checkboxState) {
+  return movies.filter((filteredMovies) =>(checkboxState ? filteredMovies.duration <= 40 : filteredMovies) &&
+    filteredMovies.nameRU.toLowerCase().includes(searchQuerry.search.toLowerCase())
+  );
 }
