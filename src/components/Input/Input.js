@@ -10,6 +10,7 @@ function Input({
   handleChange,
   type,
   minLength,
+  pattern,
 }) {
   return (
     <div className='input'>
@@ -24,6 +25,7 @@ function Input({
           placeholder={placeholder}
           onChange={handleChange}
           minLength={minLength}
+          pattern={pattern && pattern}
           required
         />
       </label>

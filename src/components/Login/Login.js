@@ -5,8 +5,8 @@ import Input from '../Input/Input';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
 function Login({ pathname, handleLogin }) {
-
-  const { values, handleChange, errors, resetForm, isValid } = useFormWithValidation();
+  const { values, handleChange, errors, resetForm, isValid } =
+    useFormWithValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -32,6 +32,7 @@ function Login({ pathname, handleLogin }) {
           value={values.email || ''}
           type='email'
           errMessage={errors}
+          pattern='\S+@[a-z]+\.[a-z]{2,}'
         />
         <Input
           label='Пароль'

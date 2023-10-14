@@ -5,8 +5,8 @@ import Input from '../Input/Input';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
 function Register({ pathname, handleRegister }) {
-
-  const { values, handleChange, errors, resetForm, isValid } = useFormWithValidation({});
+  const { values, handleChange, errors, resetForm, isValid } =
+    useFormWithValidation({});
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -17,12 +17,12 @@ function Register({ pathname, handleRegister }) {
   return (
     <section className='register'>
       <SignForm
-      name='register'
-      title='Добро пожаловать!'
-      textButton='Зарегистрироваться'
-      pathname={pathname}
-      handleSubmit={handleSubmit}
-      isValid={isValid}
+        name='register'
+        title='Добро пожаловать!'
+        textButton='Зарегистрироваться'
+        pathname={pathname}
+        handleSubmit={handleSubmit}
+        isValid={isValid}
       >
         <Input
           label='Имя'
@@ -42,6 +42,7 @@ function Register({ pathname, handleRegister }) {
           handleChange={handleChange}
           value={values.email || ''}
           type='email'
+          pattern='\S+@[a-z]+\.[a-z]{2,}'
         />
         <Input
           label='Пароль'

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -7,16 +7,20 @@ import Footer from '../Footer/Footer';
 import { filter } from '../../utils/utils';
 
 function SavedMovies({ savedMovies, handleDeleteSavedMovie }) {
-  const [filteredMoviesList, setFilteredMoviesList] = useState([]);
   const [shortMoviesChecker, setShortMoviesChecker] = useState(false);
+  const [moviesList, setMoviesList] = useState([]);
 
   function searchMovies(values) {
-    setFilteredMoviesList(filter(savedMovies, values, shortMoviesChecker));
+    setMoviesList(filter(savedMovies, values, shortMoviesChecker));
   }
 
   function handleShortMoviesChange() {
     setShortMoviesChecker(!shortMoviesChecker);
   }
+
+  useEffect(() => {
+    setMoviesList(savedMovies);
+  }, [savedMovies]);
 
   return (
     <section className='saved-movies' aria-label='Сохраненные фильмы'>
@@ -27,9 +31,7 @@ function SavedMovies({ savedMovies, handleDeleteSavedMovie }) {
         shortMoviesChecker={shortMoviesChecker}
       />
       <MoviesCardList
-        moviesList={
-          filteredMoviesList.length <= 0 ? savedMovies : filteredMoviesList
-        }
+        moviesList={moviesList}
         savedMovies={savedMovies}
         handleDeleteSavedMovie={handleDeleteSavedMovie}
       />

@@ -155,6 +155,7 @@ function App() {
                   <ProtectedRoute
                     element={SavedMovies}
                     savedMovies={savedMovies}
+                    setSavedMovies={setSavedMovies}
                     handleDeleteSavedMovie={handleDeleteSavedMovie}
                   />
                 }

@@ -19,6 +19,7 @@ function Movies({ savedMovies, handleSaveButtonClick }) {
   const [isLoading, setIsLoading] = useState(false); // Стейт ожидания ответа от сервера
   const [error, setError] = useState(false); // Стейт ошибки при получении ошибки от сервера
   const [shortMoviesChecker, setShortMoviesChecker] = useState(false);
+  const [notFoundErr, setNotFoundErr] = useState(false);
 
   const searchRequest = JSON.parse(localStorage.getItem('searchText'));
 
@@ -56,6 +57,9 @@ function Movies({ savedMovies, handleSaveButtonClick }) {
     MoviesApi.getMovies()
       .then((moviesData) => {
         const filteredMovies = filter(moviesData, values, shortMoviesChecker);
+        filteredMovies.length <= 0
+          ? setNotFoundErr(true)
+          : setNotFoundErr(false);
         setMoviesList(filteredMovies);
         populateStorage(values, filteredMovies, shortMoviesChecker);
       })
@@ -102,6 +106,8 @@ function Movies({ savedMovies, handleSaveButtonClick }) {
         <Preloader />
       ) : error ? (
         <RequestMessage />
+      ) : notFoundErr ? (
+        <p className='movies__not-found-error'>Ничего не найдено</p>
       ) : (
         <MoviesCardList
           moviesList={showMoviesList}
