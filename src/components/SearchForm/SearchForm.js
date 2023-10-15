@@ -26,7 +26,9 @@ function SearchForm({
 
   function handleSubmit(e) {
     e.preventDefault();
-    isValid ? handleSearchMovies(values) : setError('Нужно ввести ключевое слово');
+    isValid
+      ? handleSearchMovies(values)
+      : setError('Нужно ввести ключевое слово');
   }
 
   return (

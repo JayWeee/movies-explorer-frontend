@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
-import "./Header.css";
-import Navigation from "../Navigation/Navigation";
-import AuthNavigation from "../AuthNavigation/AuthNavigation";
-import Logo from "../Logo/Logo";
+import { useContext, useState } from 'react';
+import './Header.css';
+import Navigation from '../Navigation/Navigation';
+import AuthNavigation from '../AuthNavigation/AuthNavigation';
+import Logo from '../Logo/Logo';
 import { AppContext } from '../../contexts/AppContext';
 
 function Header() {
@@ -23,7 +23,10 @@ function Header() {
             onClick={handleClick}
             value=''
           />
-          <Navigation isSidebarActive={isSidebarActive} setIsSidebarActive={setIsSidebarActive} />
+          <Navigation
+            isSidebarActive={isSidebarActive}
+            setIsSidebarActive={setIsSidebarActive}
+          />
         </>
       ) : (
         <AuthNavigation />

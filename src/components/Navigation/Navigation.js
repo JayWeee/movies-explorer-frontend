@@ -1,11 +1,10 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
-import "./Navigation.css";
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import './Navigation.css';
 
 function Navigation({ isSidebarActive, setIsSidebarActive }) {
-
   function handleClick() {
-    setIsSidebarActive(false)
+    setIsSidebarActive(false);
   }
 
   return (
@@ -16,18 +15,20 @@ function Navigation({ isSidebarActive, setIsSidebarActive }) {
           onClick={handleClick}
           value=''
         />
-        <nav className="navigation__links">
+        <nav className='navigation__links'>
           <div className='navigation__links-container'>
             <NavLink
               to='/'
-              className={({ isActive }) => 
-                `navigation__link navigation__main-link ${isActive && 'navigation__link_active'}`
+              className={({ isActive }) =>
+                `navigation__link navigation__main-link ${
+                  isActive && 'navigation__link_active'
+                }`
               }
             >
               Главная
             </NavLink>
             <NavLink
-              to="/movies"
+              to='/movies'
               className={({ isActive }) =>
                 `navigation__link ${isActive && 'navigation__link_active'}`
               }
@@ -35,7 +36,7 @@ function Navigation({ isSidebarActive, setIsSidebarActive }) {
               Фильмы
             </NavLink>
             <NavLink
-              to="/saved-movies"
+              to='/saved-movies'
               className={({ isActive }) =>
                 `navigation__link ${isActive && 'navigation__link_active'}`
               }
@@ -43,7 +44,7 @@ function Navigation({ isSidebarActive, setIsSidebarActive }) {
               Сохранённые фильмы
             </NavLink>
           </div>
-          <Link className="navigation__account-link" to="/profile">
+          <Link className='navigation__account-link' to='/profile'>
             Аккаунт
           </Link>
         </nav>

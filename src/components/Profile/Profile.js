@@ -4,11 +4,13 @@ import Header from '../Header/Header';
 import FormButton from '../FormButton/FormButton';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { ErrorContext } from '../../contexts/ErrorContext';
 
-function Profile({ handleUpdateUser, handleSignOut }) {
+function Profile({ handleUpdateUser, handleSignOut, isLoading }) {
   const [isEdit, setIsEdit] = useState(false);
   const [disabledButton, setDisabledButton] = useState(false);
   const disabled = !isEdit && 'disabled';
+  const { error } = useContext(ErrorContext);
 
   const { values, setValues, handleChange, errors, isValid } =
     useFormWithValidation({});
@@ -30,8 +32,7 @@ function Profile({ handleUpdateUser, handleSignOut }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleUpdateUser(values);
-    setIsEdit(false);
+    handleUpdateUser(values, setIsEdit);
   }
 
   return (
@@ -88,6 +89,7 @@ function Profile({ handleUpdateUser, handleSignOut }) {
             textButton='Сохранить'
             isValid={isValid}
             disabledButton={disabledButton}
+            errorMessage={error.message}
           />
         ) : (
           <div className='profile__buttons'>

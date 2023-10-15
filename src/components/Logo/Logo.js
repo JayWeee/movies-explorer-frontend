@@ -5,7 +5,9 @@ import './Logo.css';
 
 function Logo() {
   return (
-    <Link className='logo' to='/'><img  src={logo} alt="Логотип сайта" /></Link>
+    <Link className='logo' to='/'>
+      <img src={logo} alt='Логотип сайта' />
+    </Link>
   );
 }
 

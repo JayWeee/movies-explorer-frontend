@@ -10,8 +10,7 @@ function Login({ pathname, handleLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleLogin(values);
-    resetForm();
+    handleLogin(values, resetForm);
   }
 
   return (

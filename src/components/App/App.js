@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { AppContext } from '../../contexts/AppContext';
+import { ErrorContext } from '../../contexts/ErrorContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
@@ -20,43 +21,63 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [error, setError] = useState({});
 
-  function handleUpdateUser({ name, email }) {
+  function handleUpdateUser({ name, email }, setIsEdit) {
     MainApi.setUserInfo({ name, email })
-      .then((userData) => setCurrentUser(userData))
-      .catch(console.error);
+      .then((userData) => {
+        setCurrentUser(userData);
+        setError({});
+        setIsEdit(false);
+      })
+      .catch((err) =>
+        err
+          .json()
+          .then((error) =>
+            setError({ status: err.status, message: error.message })
+          )
+      );
   }
 
-  function handleLogin({ email, password }) {
-    setIsLoaded(false);
+  function handleLogin({ email, password }, resetForm) {
     MainApi.authorize({ email, password })
       .then((userData) => {
         if (userData.userId) {
           localStorage.setItem('userId', userData.userId);
           tokenCheck();
+          setLoggedIn(true);
+          navigate('/movies', { replace: true });
+          setError({});
+          resetForm();
         }
       })
-      .catch(console.error)
-      .finally(() => {
-        setIsLoaded(true);
-        setLoggedIn(true);
-        navigate('/movies', { replace: true });
-      });
+      .catch((err) =>
+        err
+          .json()
+          .then((error) =>
+            setError({ status: err.status, message: error.message })
+          )
+      );
   }
 
-  function handleRegister({ name, email, password }) {
+  function handleRegister({ name, email, password }, resetForm) {
     MainApi.register({ name, email, password })
       .then((userData) => {
         if (userData.userId) {
           localStorage.setItem('userId', userData.userId);
           tokenCheck();
+          setLoggedIn(true);
+          navigate('/movies', { replace: true });
+          setError({});
+          resetForm();
         }
       })
-      .catch(console.error)
-      .finally(() => {
-        setLoggedIn(true);
-        setIsLoaded(true);
-        navigate('/movies', { replace: true });
+      .catch((err) => {
+        err
+          .json()
+          .then((error) =>
+            setError({ status: err.status, message: error.message })
+          );
       });
   }
 
@@ -137,57 +158,59 @@ function App() {
       {isLoaded && (
         <AppContext.Provider value={loggedIn}>
           <CurrentUserContext.Provider value={currentUser}>
-            <Routes>
-              <Route path='/' element={<Main />} />
-              <Route
-                path='/movies'
-                element={
-                  <ProtectedRoute
-                    element={Movies}
-                    savedMovies={savedMovies}
-                    handleSaveButtonClick={handleSaveButtonClick}
-                  />
-                }
-              />
-              <Route
-                path='/saved-movies'
-                element={
-                  <ProtectedRoute
-                    element={SavedMovies}
-                    savedMovies={savedMovies}
-                    setSavedMovies={setSavedMovies}
-                    handleDeleteSavedMovie={handleDeleteSavedMovie}
-                  />
-                }
-              />
-              <Route
-                path='/profile'
-                element={
-                  <ProtectedRoute
-                    element={Profile}
-                    handleUpdateUser={handleUpdateUser}
-                    handleSignOut={handleSignOut}
-                    loggedIn={loggedIn}
-                  />
-                }
-              />
-              <Route
-                path='/signup'
-                element={
-                  <Register
-                    handleRegister={handleRegister}
-                    pathname={pathname}
-                  />
-                }
-              />
-              <Route
-                path='/signin'
-                element={
-                  <Login handleLogin={handleLogin} pathname={pathname} />
-                }
-              />
-              <Route path='*' element={<NotFoundPage />} />
-            </Routes>
+            <ErrorContext.Provider value={{ error, setError }}>
+              <Routes>
+                <Route path='/' element={<Main />} />
+                <Route
+                  path='/movies'
+                  element={
+                    <ProtectedRoute
+                      element={Movies}
+                      savedMovies={savedMovies}
+                      handleSaveButtonClick={handleSaveButtonClick}
+                    />
+                  }
+                />
+                <Route
+                  path='/saved-movies'
+                  element={
+                    <ProtectedRoute
+                      element={SavedMovies}
+                      savedMovies={savedMovies}
+                      setSavedMovies={setSavedMovies}
+                      handleDeleteSavedMovie={handleDeleteSavedMovie}
+                    />
+                  }
+                />
+                <Route
+                  path='/profile'
+                  element={
+                    <ProtectedRoute
+                      element={Profile}
+                      handleUpdateUser={handleUpdateUser}
+                      handleSignOut={handleSignOut}
+                      loggedIn={loggedIn}
+                    />
+                  }
+                />
+                <Route
+                  path='/signup'
+                  element={
+                    <Register
+                      handleRegister={handleRegister}
+                      pathname={pathname}
+                    />
+                  }
+                />
+                <Route
+                  path='/signin'
+                  element={
+                    <Login handleLogin={handleLogin} pathname={pathname} />
+                  }
+                />
+                <Route path='*' element={<NotFoundPage />} />
+              </Routes>
+            </ErrorContext.Provider>
           </CurrentUserContext.Provider>
         </AppContext.Provider>
       )}

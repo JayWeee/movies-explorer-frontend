@@ -11,7 +11,7 @@ function TimeLine() {
       <div className='timeline__frontend-container'>
         <p className='timeline__item'>4 недели</p>
         <p className='timeline__caption'>Front-end</p>
-        </div>
+      </div>
     </div>
   );
 }

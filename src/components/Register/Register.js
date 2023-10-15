@@ -4,14 +4,14 @@ import SignForm from '../SignForm/SignForm';
 import Input from '../Input/Input';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
-function Register({ pathname, handleRegister }) {
+function Register({ pathname, handleRegister, isLoading }) {
   const { values, handleChange, errors, resetForm, isValid } =
     useFormWithValidation({});
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleRegister(values);
-    resetForm();
+    handleRegister(values, resetForm);
+    isLoading && resetForm();
   }
 
   return (
