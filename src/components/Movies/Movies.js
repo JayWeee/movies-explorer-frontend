@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import "./Movies.css";
-import SearchForm from "../SearchForm/SearchForm";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
-import MoreButton from "../MoreButton/MoreButton";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import Preloader from "../Preloader/Preloader";
-import RequestMessage from "../RequestMessage/RequestMessage";
-import * as MoviesApi from "../../utils/MoviesApi";
-import { filter } from "../../utils/utils";
+import { useEffect, useState } from 'react';
+import './Movies.css';
+import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import MoreButton from '../MoreButton/MoreButton';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import Preloader from '../Preloader/Preloader';
+import RequestMessage from '../RequestMessage/RequestMessage';
+import * as MoviesApi from '../../utils/MoviesApi';
+import { filter } from '../../utils/utils';
 
 function Movies({ savedMovies, handleSaveButtonClick }) {
   const [moviesList, setMoviesList] = useState([]); // Массив со всеми фильмами
@@ -22,9 +22,9 @@ function Movies({ savedMovies, handleSaveButtonClick }) {
   const [shortMoviesChecker, setShortMoviesChecker] = useState(false);
   const [notFoundErr, setNotFoundErr] = useState(false);
 
-  const searchRequest = JSON.parse(localStorage.getItem("searchText"));
-  const moviesCheckbox = JSON.parse(localStorage.getItem("checkboxState"));
-  const movies = JSON.parse(localStorage.getItem("movies"));
+  const searchRequest = JSON.parse(localStorage.getItem('searchText'));
+  const moviesCheckbox = JSON.parse(localStorage.getItem('checkboxState'));
+  const movies = JSON.parse(localStorage.getItem('movies'));
 
   function checkWindowSize() {
     const { innerWidth } = window;
@@ -70,13 +70,13 @@ function Movies({ savedMovies, handleSaveButtonClick }) {
   }
 
   function populateStorage(values) {
-    localStorage.setItem("searchText", JSON.stringify(values));
+    localStorage.setItem('searchText', JSON.stringify(values));
   }
 
   useEffect(() => {
     filteredMovies.length > 0 &&
-      localStorage.setItem("movies", JSON.stringify(filteredMovies));
-    localStorage.setItem("checkboxState", shortMoviesChecker);
+      localStorage.setItem('movies', JSON.stringify(filteredMovies));
+    localStorage.setItem('checkboxState', shortMoviesChecker);
   }, [filteredMovies, shortMoviesChecker]);
 
   function showMore() {
@@ -105,9 +105,9 @@ function Movies({ savedMovies, handleSaveButtonClick }) {
   }, []);
 
   useEffect(() => {
-    window.addEventListener("resize", checkWindowSize);
+    window.addEventListener('resize', checkWindowSize);
     return () => {
-      window.removeEventListener("resize", checkWindowSize);
+      window.removeEventListener('resize', checkWindowSize);
     };
   }, []);
 

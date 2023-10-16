@@ -11,6 +11,7 @@ import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import PopupWithConfirm from '../PopupWithConfirm/PopupWithConfirm';
 import * as MainApi from '../../utils/MainApi';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
   const [error, setError] = useState({});
+  const [isPopupWithConfirmOpen, setIsPopupWithConfirmOpen] = useState(false);
 
   function handleUpdateUser({ name, email }, setIsEdit) {
     MainApi.setUserInfo({ name, email })
@@ -29,6 +31,8 @@ function App() {
         setCurrentUser(userData);
         setError({});
         setIsEdit(false);
+        setIsPopupWithConfirmOpen(true)
+        setTimeout(setIsPopupWithConfirmOpen, 3000, false)
       })
       .catch((err) =>
         err
@@ -210,6 +214,7 @@ function App() {
                 />
                 <Route path='*' element={<NotFoundPage />} />
               </Routes>
+              <PopupWithConfirm isOpen={isPopupWithConfirmOpen} />
             </ErrorContext.Provider>
           </CurrentUserContext.Provider>
         </AppContext.Provider>
