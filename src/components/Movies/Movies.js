@@ -48,6 +48,7 @@ function Movies({ savedMovies, handleSaveButtonClick }) {
         setMoviesList(moviesData);
         setFilteredMovies(filter(moviesData, values, shortMoviesChecker));
         populateStorage(values);
+        checkWindowSize();
       })
       .catch(() => {
         setError(true);
@@ -119,6 +120,7 @@ function Movies({ savedMovies, handleSaveButtonClick }) {
         handleShortMoviesChange={handleShortMoviesChange}
         shortMoviesChecker={shortMoviesChecker}
         searchRequest={searchRequest}
+        isLoading={isLoading}
       />
       {isLoading ? (
         <Preloader />

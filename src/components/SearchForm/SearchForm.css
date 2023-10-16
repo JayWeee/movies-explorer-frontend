@@ -58,6 +58,12 @@
   opacity: .8;
 }
 
+.search-form__submit-btn_disabled {
+  cursor: default;
+  background-color: #6A5ACD;
+  opacity: .8;
+}
+
 @media screen and (max-width: 768px) {
   .search-form {
     width: calc(100% - 60px);

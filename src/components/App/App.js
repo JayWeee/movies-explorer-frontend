@@ -21,18 +21,20 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [savedMovies, setSavedMovies] = useState([]);
   const [error, setError] = useState({});
   const [isPopupWithConfirmOpen, setIsPopupWithConfirmOpen] = useState(false);
 
   function handleUpdateUser({ name, email }, setIsEdit) {
+    setIsLoading(true);
     MainApi.setUserInfo({ name, email })
       .then((userData) => {
         setCurrentUser(userData);
         setError({});
         setIsEdit(false);
-        setIsPopupWithConfirmOpen(true)
-        setTimeout(setIsPopupWithConfirmOpen, 3000, false)
+        setIsPopupWithConfirmOpen(true);
+        setTimeout(setIsPopupWithConfirmOpen, 3000, false);
       })
       .catch((err) =>
         err
@@ -40,10 +42,12 @@ function App() {
           .then((error) =>
             setError({ status: err.status, message: error.message })
           )
-      );
+      )
+      .finally(() => setIsLoading(false));
   }
 
   function handleLogin({ email, password }, resetForm) {
+    setIsLoading(true);
     MainApi.authorize({ email, password })
       .then((userData) => {
         if (userData.userId) {
@@ -61,10 +65,12 @@ function App() {
           .then((error) =>
             setError({ status: err.status, message: error.message })
           )
-      );
+      )
+      .finally(() => setIsLoading(false));
   }
 
   function handleRegister({ name, email, password }, resetForm) {
+    setIsLoading(true);
     MainApi.register({ name, email, password })
       .then((userData) => {
         if (userData.userId) {
@@ -82,7 +88,8 @@ function App() {
           .then((error) =>
             setError({ status: err.status, message: error.message })
           );
-      });
+      })
+      .finally(() => setIsLoading(false));
   }
 
   function handleSignOut() {
@@ -194,6 +201,7 @@ function App() {
                       handleUpdateUser={handleUpdateUser}
                       handleSignOut={handleSignOut}
                       loggedIn={loggedIn}
+                      isLoading={isLoading}
                     />
                   }
                 />
@@ -203,13 +211,18 @@ function App() {
                     <Register
                       handleRegister={handleRegister}
                       pathname={pathname}
+                      isLoading={isLoading}
                     />
                   }
                 />
                 <Route
                   path='/signin'
                   element={
-                    <Login handleLogin={handleLogin} pathname={pathname} />
+                    <Login
+                      handleLogin={handleLogin}
+                      pathname={pathname}
+                      isLoading={isLoading}
+                    />
                   }
                 />
                 <Route path='*' element={<NotFoundPage />} />

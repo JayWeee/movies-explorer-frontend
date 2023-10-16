@@ -13,6 +13,7 @@ function SignForm({
   pathname,
   handleSubmit,
   isValid,
+  isLoading,
 }) {
   const { error, setError } = useContext(ErrorContext);
   useEffect(() => {
@@ -40,6 +41,7 @@ function SignForm({
           textButton={textButton}
           isValid={isValid}
           errorMessage={error.message}
+          isLoading={isLoading}
         />
         <p className='form__caption'>
           {pathname === '/signup'

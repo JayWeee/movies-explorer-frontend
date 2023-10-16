@@ -11,6 +11,7 @@ function Input({
   type,
   minLength,
   pattern,
+  isLoading
 }) {
   return (
     <div className='input'>
@@ -26,6 +27,7 @@ function Input({
           onChange={handleChange}
           minLength={minLength}
           pattern={pattern && pattern}
+          disabled={isLoading && 'disabled'}
           required
         />
       </label>

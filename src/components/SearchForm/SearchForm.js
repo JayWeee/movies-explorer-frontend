@@ -8,6 +8,7 @@ function SearchForm({
   handleShortMoviesChange,
   shortMoviesChecker,
   searchRequest,
+  isLoading,
 }) {
   const { values, handleChange, isValid, setValues } = useFormWithValidation(
     {}
@@ -47,14 +48,19 @@ function SearchForm({
           placeholder='Фильм'
           value={values.search || ''}
           onChange={handleChange}
+          disabled={isLoading && 'disabled'}
           required
         />
-        <button className='search-form__submit-btn' />
+        <button
+          className={`search-form__submit-btn ${isLoading && 'search-form__submit-btn_disabled'}`}
+          disabled={isLoading && 'disabled'}
+        />
       </div>
       <span className='search-form__input-error'>{error}</span>
       <FilterCheckbox
         onChange={handleShortMoviesChange}
         shortMoviesChecker={shortMoviesChecker}
+        isLoading={isLoading}
       />
     </form>
   );

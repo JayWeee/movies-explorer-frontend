@@ -11,7 +11,6 @@ function Register({ pathname, handleRegister, isLoading }) {
   function handleSubmit(e) {
     e.preventDefault();
     handleRegister(values, resetForm);
-    isLoading && resetForm();
   }
 
   return (
@@ -19,10 +18,11 @@ function Register({ pathname, handleRegister, isLoading }) {
       <SignForm
         name='register'
         title='Добро пожаловать!'
-        textButton='Зарегистрироваться'
+        textButton={isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
         pathname={pathname}
         handleSubmit={handleSubmit}
         isValid={isValid}
+        isLoading={isLoading}
       >
         <Input
           label='Имя'
@@ -33,6 +33,7 @@ function Register({ pathname, handleRegister, isLoading }) {
           value={values.name || ''}
           type='text'
           minLength='2'
+          isLoading={isLoading}
         />
         <Input
           label='E-mail'
@@ -43,6 +44,7 @@ function Register({ pathname, handleRegister, isLoading }) {
           value={values.email || ''}
           type='email'
           pattern='\S+@[a-z]+\.[a-z]{2,}'
+          isLoading={isLoading}
         />
         <Input
           label='Пароль'
@@ -53,6 +55,7 @@ function Register({ pathname, handleRegister, isLoading }) {
           value={values.password || ''}
           type='password'
           minLength='8'
+          isLoading={isLoading}
         />
       </SignForm>
     </section>

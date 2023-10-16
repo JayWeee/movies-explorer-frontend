@@ -9,7 +9,7 @@ import { ErrorContext } from '../../contexts/ErrorContext';
 function Profile({ handleUpdateUser, handleSignOut, isLoading }) {
   const [isEdit, setIsEdit] = useState(false);
   const [disabledButton, setDisabledButton] = useState(false);
-  const disabled = !isEdit && 'disabled';
+  const disabled = isLoading ? 'disabled' : !isEdit && 'disabled';
   const { error } = useContext(ErrorContext);
 
   const { values, setValues, handleChange, errors, isValid } =
@@ -86,9 +86,10 @@ function Profile({ handleUpdateUser, handleSignOut, isLoading }) {
         </fieldset>
         {isEdit ? (
           <FormButton
-            textButton='Сохранить'
+            textButton={isLoading ? 'Сохранение...' : 'Сохранить'}
             isValid={isValid}
             disabledButton={disabledButton}
+            isLoading={isLoading}
             errorMessage={error.message}
           />
         ) : (

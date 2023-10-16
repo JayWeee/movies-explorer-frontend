@@ -4,7 +4,7 @@ import SignForm from '../SignForm/SignForm';
 import Input from '../Input/Input';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 
-function Login({ pathname, handleLogin }) {
+function Login({ pathname, handleLogin, isLoading }) {
   const { values, handleChange, errors, resetForm, isValid } =
     useFormWithValidation();
 
@@ -18,10 +18,11 @@ function Login({ pathname, handleLogin }) {
       <SignForm
         name='login'
         title='Рады видеть!'
-        textButton='Войти'
+        textButton={isLoading ? 'Вход...' : 'Войти'}
         pathname={pathname}
         handleSubmit={handleSubmit}
         isValid={isValid}
+        isLoading={isLoading}
       >
         <Input
           label='E-mail'
@@ -31,6 +32,7 @@ function Login({ pathname, handleLogin }) {
           value={values.email || ''}
           type='email'
           errMessage={errors}
+          isLoading={isLoading}
           pattern='\S+@[a-z]+\.[a-z]{2,}'
         />
         <Input
@@ -42,6 +44,7 @@ function Login({ pathname, handleLogin }) {
           type='password'
           errMessage={errors}
           minLength='8'
+          isLoading={isLoading}
         />
       </SignForm>
     </section>
