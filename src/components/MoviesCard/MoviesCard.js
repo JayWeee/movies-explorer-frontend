@@ -27,8 +27,6 @@ function MoviesCard({
     handleDeleteSavedMovie(movie);
   }
 
-  function handleMovieClick() {}
-
   return (
     <article className='card'>
       <a
@@ -41,7 +39,6 @@ function MoviesCard({
           className='card__img'
           alt='Карточка'
           src={cardImage}
-          onClick={handleMovieClick}
         />
       </a>
       <button
