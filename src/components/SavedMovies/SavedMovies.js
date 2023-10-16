@@ -18,6 +18,8 @@ function SavedMovies({ savedMovies, handleDeleteSavedMovie }) {
     setShortMoviesChecker(!shortMoviesChecker);
   }
 
+  console.log(moviesList)
+
   useEffect(() => {
     setMoviesList(savedMovies);
   }, [savedMovies]);

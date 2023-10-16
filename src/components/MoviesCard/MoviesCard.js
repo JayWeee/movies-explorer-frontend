@@ -27,18 +27,30 @@ function MoviesCard({
     handleDeleteSavedMovie(movie);
   }
 
+  function handleMovieClick() {}
+
   return (
     <article className='card'>
-      <img className='card__img' alt='Карточка' src={cardImage} />
-      <div className='card__btn-container'>
-        <button
-          className={onSavedPage ? cardBtnSavedClassName : cardBtnClassName}
-          type='button'
-          onClick={onSavedPage ? handleDeleteMovie : handleClick}
-        >
-          {onSavedPage ? '' : cardBtnValue}
-        </button>
-      </div>
+      <a
+        className='card__trailerlink'
+        href={movie.trailerLink}
+        target='_blank'
+        rel='noreferrer'
+      >
+        <img
+          className='card__img'
+          alt='Карточка'
+          src={cardImage}
+          onClick={handleMovieClick}
+        />
+      </a>
+      <button
+        className={onSavedPage ? cardBtnSavedClassName : cardBtnClassName}
+        type='button'
+        onClick={onSavedPage ? handleDeleteMovie : handleClick}
+      >
+        {onSavedPage ? '' : cardBtnValue}
+      </button>
       <div className='card__description'>
         <h2 className='card__title'>{movie.nameRU}</h2>
         <p className='card__duration'>{getTimeFromMins(movie.duration)}</p>

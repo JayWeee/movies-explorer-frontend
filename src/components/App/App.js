@@ -111,6 +111,7 @@ function App() {
   }
 
   function handleSaveButtonClick(movie) {
+    console.log(movie)
     const isSaved = savedMovies.some((m) => m.movieId === movie.id);
     if (isSaved) {
       const savedMovieId = savedMovies.find((m) => m.movieId === movie.id)._id;
