@@ -96,10 +96,7 @@ function App() {
   }
 
   function handleSignOut() {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('checkboxState');
-    localStorage.removeItem('searchText');
-    localStorage.removeItem('movies');
+    localStorage.clear();
     MainApi.removeCoockies().catch(console.error);
     setLoggedIn(false);
     navigate('/', { replace: true });
@@ -144,22 +141,35 @@ function App() {
   }
 
   function tokenCheck() {
-    const userId = localStorage.getItem('userId');
+    // const userId = localStorage.getItem('userId');
+    MainApi.getUserInfo()
+      .then((userData) => {
+        setCurrentUser(userData);
+        getSavedMovies();
+        setLoggedIn(true);
+      })
+      .catch(() => {
+        setLoggedIn(false);
+        setCurrentUser({});
+        setSavedMovies({});
+        localStorage.clear();
+      })
+      .finally(() => setIsLoaded(true));
 
-    if (userId) {
-      MainApi.getUserInfo()
-        .then((userData) => {
-          setCurrentUser(userData);
-          getSavedMovies();
-        })
-        .catch(console.error)
-        .finally(() => {
-          setLoggedIn(true);
-          setIsLoaded(true);
-        });
-    } else {
-      setIsLoaded(true);
-    }
+    // if (userId) {
+    //   MainApi.getUserInfo()
+    //     .then((userData) => {
+    //       setCurrentUser(userData);
+    //       getSavedMovies();
+    //     })
+    //     .catch(console.error)
+    //     .finally(() => {
+    //       setLoggedIn(true);
+    //       setIsLoaded(true);
+    //     });
+    // } else {
+    //   setIsLoaded(true);
+    // }
   }
 
   useEffect(() => {
