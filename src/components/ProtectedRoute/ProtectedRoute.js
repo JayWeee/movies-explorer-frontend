@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AppContext } from '../../contexts/AppContext';
 
-function ProtectedRoute({ element: Component, ...props }) {
+export function ProtectedRoute({ element: Component, ...props }) {
   const loggedIn = useContext(AppContext);
 
   return loggedIn ? (
@@ -12,4 +12,12 @@ function ProtectedRoute({ element: Component, ...props }) {
   );
 }
 
-export default ProtectedRoute;
+export function ProtectedAuthRoute({ element: Component, ...props }) {
+  const loggedIn = useContext(AppContext);
+
+  return loggedIn ? (
+    <Navigate to='/movies' replace />
+  ) : (
+    <Component {...props}></Component>
+  );
+}

@@ -3,7 +3,10 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import { AppContext } from '../../contexts/AppContext';
 import { ErrorContext } from '../../contexts/ErrorContext';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import {
+  ProtectedRoute,
+  ProtectedAuthRoute,
+} from '../ProtectedRoute/ProtectedRoute';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -208,7 +211,8 @@ function App() {
                 <Route
                   path='/signup'
                   element={
-                    <Register
+                    <ProtectedAuthRoute
+                      element={Register}
                       handleRegister={handleRegister}
                       pathname={pathname}
                       isLoading={isLoading}
@@ -218,7 +222,8 @@ function App() {
                 <Route
                   path='/signin'
                   element={
-                    <Login
+                    <ProtectedAuthRoute
+                      element={Login}
                       handleLogin={handleLogin}
                       pathname={pathname}
                       isLoading={isLoading}
