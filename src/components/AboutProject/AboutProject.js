@@ -9,9 +9,9 @@ function AboutProject() {
   return (
     <section className='project' id='project'>
       <Container>
-      <SectionTitle title="О проекте" />
-      <ProjectInfo />
-      <TimeLine />
+        <SectionTitle title='О проекте' />
+        <ProjectInfo />
+        <TimeLine />
       </Container>
     </section>
   );

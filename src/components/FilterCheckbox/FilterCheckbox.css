@@ -6,6 +6,11 @@
   margin-bottom: 39px;
 }
 
+.filter_disabled {
+  cursor: default;
+  opacity: .8;
+}
+
 .filter__checkbox {
   position: absolute;
   width: 1px;
